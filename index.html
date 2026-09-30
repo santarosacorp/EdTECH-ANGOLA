@@ -21,15 +21,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- LOGO DA PLATAFORMA -->
-            <div class="flex items-center space-x-3" transform="background-white">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="20%" height="auto" background="white">
+            <<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="10%" height="auto">
   <defs>
-    <!-- Gradiente do Fundo do Card -->
-    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#F8FAFC"/>
-    </linearGradient>
-
     <!-- Gradiente Principal (Indigo / Púrpura Futurista) -->
     <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#4F46E5" />
@@ -51,12 +44,12 @@
 
     <!-- Sombras e Brilho -->
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.12"/>
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.04"/>
     </filter>
 
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4F46E5" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4F46E5" flood-opacity="0.25"/>
     </filter>
 
     <!-- ESTILOS E ANIMAÇÕES CSS -->
@@ -107,8 +100,8 @@
     </style>
   </defs>
 
-  <!-- 1. CONTAINER QUADRADO ARREDONDADO (APP ICON PREMIUM) -->
-  <rect x="10" y="10" width="220" height="220" rx="52" fill="url(#cardBg)" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+  <!-- 1. CONTAINER QUADRADO ARREDONDADO COM FUNDO BRANCO PURO -->
+  <rect x="10" y="10" width="220" height="220" rx="52" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
 
   <!-- 2. ISOTIPO INTEGRADO (CHAPÉU DE GRADUAÇÃO DIGITAL + MONOGRAMA 'E' EM CIRCUITO + SETA DE EVOLUÇÃO) -->
   <g class="floating-symbol" filter="url(#glow)">
@@ -145,18 +138,6 @@
       <circle cx="120" cy="58" r="3" fill="#FFFFFF"/>
     </g>
   </g>
-
-  <!-- 3. MARCA NOMINAL PROMINENTE: EdTECH -->
-  <g transform="translate(120, 185)">
-    <!-- Texto Principal EdTECH -->
-    <text text-anchor="middle" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-size="27" font-weight="900" letter-spacing="1">
-      <tspan fill="#0F172A">Ed</tspan><tspan fill="url(#cyanGrad)">TECH</tspan>
-    </text>
-    
-    <!-- Subtítulo de Apoio -->
-    <text y="18" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="#64748B" letter-spacing="2.8">
-      EDUCATION &amp; SCIENCE
-    </text>
   </g>
 </svg>
                 <div>
