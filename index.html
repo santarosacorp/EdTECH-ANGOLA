@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTECH ANGOLA - Aprendizagem, Simulação e Criação de Projetos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / MENU PRINCIPAL -->
+    <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO DA PLATAFORMA -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-500 p-2 rounded-lg text-slate-900 font-black text-xl">EA</div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wider text-amber-400">EdTECH</span>
+                    <span class="text-xl font-bold text-white"> ANGOLA</span>
+                    <span class="block text-xs text-slate-400">Capacitação Técnica & Científica Gratuita</span>
+                </div>
+            </div>
+
+            <!-- MENU LATERAL / HUB DE NAVEGAÇÃO -->
+            <nav class="hidden md:flex space-x-1 lg:space-x-4 text-sm font-semibold">
+                <a href="#aprender" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span>Aprender</span>
+                </a>
+                <a href="#praticar" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
+                    <i data-lucide="wrench" class="w-4 h-4"></i>
+                    <span>Praticar</span>
+                </a>
+                <a href="#simulador" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
+                    <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
+                    <span>Simulador / Testes</span>
+                </a>
+                <a href="#criar" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
+                    <i data-lucide="compass" class="w-4 h-4"></i>
+                    <span>Criar Projetos</span>
+                </a>
+            </nav>
+
+            <!-- BOTÃO ENTRAR (SISTEMA DE VALIDAÇÃO DEMO) -->
+            <div class="flex items-center space-x-3">
+                <button type="submit" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center space-x-2">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    <span>ENTRAR</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="gradient-bg text-white py-16 lg:py-24 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 px-3 py-1 rounded-full text-xs font-semibold">
+                    <span>🎉 Acesso Livre & Sem Burocracia</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-black leading-tight">
+                    Aprenda, Simule e Crie Projetos de <span class="text-amber-400">Eletrônica, Eletricidade e Mecânica</span>.
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                    Plataforma inclusiva para crianças, jovens, adultos e empresas em Angola. Vídeos interativos com IA para aprendizagem infantil e simulações industriais reais para profissionais.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#criar" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-center shadow-lg transition flex items-center justify-center space-x-2">
+                        <i data-lucide="box" class="w-5 h-5"></i>
+                        <span>Iniciar Calculadora de Projetos</span>
+                    </a>
+                    <a href="#parcerias" class="border border-slate-600 hover:border-amber-400 bg-slate-800/60 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-xl text-center transition flex items-center justify-center space-x-2">
+                        <i data-lucide="handshake" class="w-5 h-5"></i>
+                        <span>Solicitar Parceria / Reunião</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD DESTAQUE DO AUTOR PRINCIPAL -->
+            <div class="bg-slate-800/90 border border-slate-700 p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-xs font-black uppercase px-4 py-1 rounded-bl-lg">
+                    Autor Principal
+                </div>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-16 h-16 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center font-black text-2xl border-2 border-white">
+                        AL
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Adilson Lourenço da Costa Santa-Rosa</h3>
+                        <p class="text-amber-400 text-sm font-medium">Engenharia Mecânica & Inovação Tecnológica</p>
+                        <p class="text-slate-400 text-xs">Lobito, Benguela - Angola</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e construir soluções tecnológicas reais sem barreiras financeiras."
+                </p>
+                <div class="space-y-3 pt-4 border-t border-slate-700/80 text-sm">
+                    <div class="flex items-center space-x-3 text-slate-300">
+                        <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+                        <span class="font-mono text-xs sm:text-sm">alexcostasantarosa@gmail.com</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-300">
+                        <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
+                        <span>+244 926 267 207 / +244 955 765 673</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUMO DO OBJETIVO E PROBLEMAS SOLUCIONADOS -->
+    <section class="py-16 px-4 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-3xl font-bold text-slate-900">Objetivo e Diagnóstico Social</h2>
+                <p class="text-slate-600 text-lg">
+                    Permitir a aquisição de conhecimentos técnicos e científicos de forma autónoma, inteligente e prática, sem burocracia, permitindo a especialização de crianças e adultos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Problemas Reais</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Dificuldade no acesso ao ensino prático e laboratórios.</li>
+                        <li>Encarecimento constante das propinas escolares.</li>
+                        <li>Escassez de material prático para conciliar com a teoria.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Ensino Gamificado & Profissional</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Vídeos interativos com Inteligência Artificial para crianças.</li>
+                        <li>Ensino intensivo com simulações industriais para adultos.</li>
+                        <li>Ambiente prático de teste, simulação e desenvolvimento.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Cálculo Autônomo & B2B</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Cálculo de estruturas para qualquer projeto ou dimensão.</li>
+                        <li>Conexão direta com a base de dados de fornecedores.</li>
+                        <li>Geração automática de cotações unitárias e totais.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HUB DE FUNCIONALIDADES (APRENDER, PRATICAR, SIMULADOR) -->
+    <section id="aprender" class="py-16 px-4 bg-slate-100">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="border-b border-slate-300 pb-4 flex flex-col md:flex-row md:items-end justify-between">
+                <div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Hub Integrado</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Aprender, Praticar & Testar</h2>
+                </div>
+                <p class="text-slate-600 text-sm mt-2 md:mt-0">Escolha uma área para iniciar os testes imediatamente.</p>
+            </div>
+
+            <!-- CARDS DAS 4 ÁREAS DE CONHECIMENTO -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Eletrônica -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Eletrônica</h3>
+                    <p class="text-slate-600 text-sm">Resistores, Capacitores, Transistores, Microcontroladores e Vídeos com IA.</p>
+                    <a href="#simulador" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Abrir Simulador</span>
+                    </a>
+                </div>
+
+                <!-- Eletricidade -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="plug-zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Eletricidade</h3>
+                    <p class="text-slate-600 text-sm">Instalações residenciais, Comandos elétricos, Leis de Kirchhoff e Segurança.</p>
+                    <a href="#simulador" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Abrir Simulador</span>
+                    </a>
+                </div>
+
+                <!-- Mecânica -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-slate-200 text-slate-800 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="cog" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Mecânica</h3>
+                    <p class="text-slate-600 text-sm">Desenho técnico, Perfis metálicos, Dimensionamento de tubos e Soldagem.</p>
+                    <a href="#criar" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Criar Projetos</span>
+                    </a>
+                </div>
+
+                <!-- Programação -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Programação</h3>
+                    <p class="text-slate-600 text-sm">Lógica de programação, C++ para Robótica, Python e Automação Industrial.</p>
+                    <a href="#simulador" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Abrir Simulador</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO INTELIGENTE DE CRIAR PROJETOS (CADEIRA OU PROJETO LIVRE) -->
+    <section id="criar" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Desenvolvimento Livre e Inteligente</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Criar Projetos Mecânicos & Cálculo de Materiais</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Cálculo autónomo para a fabricação de cadeiras ou qualquer tipo de estrutura metálica personalizada.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- FORMULÁRIO DE CONFIGURAÇÃO DE PROJETO -->
+                <div class="lg:col-span-5 bg-slate-50 p-6 rounded-xl border border-slate-300 space-y-5 shadow-sm">
+                    
+                    <!-- SELETOR DE MODO DE PROJETO -->
+                    <div>
+                        <label class="block font-bold text-slate-900 text-sm uppercase mb-2">Selecione o Tipo de Projeto:</label>
+                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                            <option value="chair">Fabricação de Cadeira Metálica (Predefinido)</option>
+                            <option value="free">Projeto Livre / Customizado (Qualquer Estrutura)</option>
+                        </select>
+                    </div>
+
+                    <hr class="border-slate-200">
+
+                    <!-- OPÇÃO 1: CAMPOS ESPECÍFICOS PARA CADEIRA METÁLICA -->
+                    <div id="chairFields" class="space-y-3 text-sm">
+                        <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Parâmetros da Cadeira:</h4>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Altura das Pernas (cm):</label>
+                            <input type="number" id="legHeight" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Largura do Assento (cm):</label>
+                            <input type="number" id="seatWidth" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Profundidade do Assento (cm):</label>
+                            <input type="number" id="seatDepth" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Altura do Encosto (cm):</label>
+                            <input type="number" id="backHeight" value="50" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <!-- OPÇÃO 2: CAMPOS PARA PROJETO LIVRE -->
+                    <div id="freeFields" class="space-y-3 text-sm hidden">
+                        <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Dimensões da Estrutura Livre:</h4>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Altura (cm):</label>
+                                <input type="number" id="freeHeight" value="100" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Largura (cm):</label>
+                                <input type="number" id="freeWidth" value="100" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Comprimento (cm):</label>
+                                <input type="number" id="freeLength" value="200" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700">Comprimento Total Direto do Tubo (Opcional - em metros):</label>
+                            <input type="number" id="directTubeMeters" placeholder="Ex: 15 (deixe em branco para calcular pelas dimensões)" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none text-xs">
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700">Quantidade de Estruturas / Peças:</label>
+                            <input type="number" id="freeQty" value="1" min="1" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <!-- TIPO DE TUBO -->
+                    <div>
+                        <label class="block font-semibold text-slate-700 text-sm">Perfil do Tubo Selecionado:</label>
+                        <select id="tubeType" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                            <option value="8500">Tubo Quadrado Aço Carbono 30x30mm (1.5mm)</option>
+                            <option value="10200">Tubo Quadrado Aço Carbono 40x40mm (2.0mm)</option>
+                            <option value="7800">Tubo Redondo 1 Polegada (1.5mm)</option>
+                            <option value="12500">Perfil Retangular 50x30mm (2.0mm)</option>
+                              <option value="8000">Cantoneira 25x25mm (2.0mm)</option>
+                              <option value="15000">Cantoneira 30x30mm (2.0mm)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="calculateProject()" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                        <span>Calcular Materiais & Orçamento B2B</span>
+                    </button>
+                </div>
+
+                <!-- PAINEL INTELIGENTE DE RESULTADOS DOS CÁLCULOS -->
+                <div class="lg:col-span-7 bg-slate-900 text-white p-6 rounded-xl space-y-6 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="font-bold text-amber-400 text-lg flex items-center space-x-2">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                            <span>Resultado do Algoritmo Inteligente</span>
+                        </h4>
+                        <span id="projTag" class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-semibold">Cadeira Metálica</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <span class="text-slate-400 text-xs block">Comprimento Total de Tubo</span>
+                            <span id="resTotalMeters" class="text-2xl font-black text-amber-400">6,98 metros</span>
+                            <span class="text-xs text-slate-400 block mt-1">(Inclui 5% de margem de perda por corte)</span>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <span class="text-slate-400 text-xs block">Barras Comerciais (6 metros)</span>
+                            <span id="resBarsCount" class="text-2xl font-black text-amber-400">2 Barras</span>
+                            <span class="text-xs text-slate-400 block mt-1">Plano de corte otimizado</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 border-t border-slate-800 pt-4 text-sm">
+                        <h5 class="font-bold text-slate-200">Consumíveis & Equipamentos Necessários:</h5>
+                        <ul class="text-slate-300 space-y-1.5 list-disc list-inside text-xs sm:text-sm">
+                            <li><strong class="text-white">Eletrodos de Solda (E6013):</strong> <span id="resElectrode">0,35 kg</span></li>
+                            <li><strong class="text-white">Discos de Corte (4.5 plg):</strong> <span id="resDiscs">2 Unidades</span></li>
+                            <li><strong class="text-white">Equipamentos Solicitados:</strong> Inversora de Solda, Rebarbadora Angular, Esquadro Magnético, EPIs de Segurança.</li>
+                        </ul>
+                    </div>
+
+                    <!-- PREÇO E BASE DE DADOS B2B -->
+                    <div class="bg-slate-800/80 p-4 rounded-lg border border-amber-500/30 space-y-3">
+                        <div class="flex justify-between items-center text-xs text-amber-400 font-bold uppercase tracking-wider">
+                            <span>Integração B2B (Fornecedores em Angola)</span>
+                            <span>AOA</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-300">Custo Total dos Materiais:</span>
+                            <span id="resTotalPrice" class="text-xl font-bold text-emerald-400">21.900 Kz</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Cotação calculada anexando preços unitários do catálogo de fornecedores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLICITAÇÃO DE PARCERIAS INSTITUCIONAIS & REUNIÕES -->
+    <section id="parcerias" class="py-16 px-4 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <div class="text-center space-y-3">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Cooperação & Expansão</span>
+                <h2 class="text-3xl font-extrabold">Parcerias Institucionais e Investimentos</h2>
+                <p class="text-slate-300 text-sm sm:text-base">
+                    Escolas, empresas, colaboradores e investidores podem encaminhar solicitações diretamente para o Autor Principal.
+                </p>
+            </div>
+
+            <form id="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Representante:</label>
+                        <input type="text" id="partnerName" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Instituição / Empresa:</label>
+                        <input type="text" id="partnerOrg" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">E-mail de Contacto:</label>
+                        <input type="email" id="partnerEmail" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Telefone / WhatsApp:</label>
+                        <input type="tel" id="partnerPhone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Tipo de Solicitação:</label>
+                    <select id="partnerType" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <option>Parceria Escolar / Educacional</option>
+                        <option>Parceria Empresarial B2B / Fornecedor</option>
+                        <option>Investimento e Financiamento</option>
+                        <option>Solicitação de Reunião Direta</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Mensagem:</label>
+                    <textarea id="partnerMsg" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span>Enviar Solicitação ao Autor Principal</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-8 px-4 border-t border-slate-800 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="font-bold text-white">EdTECH ANGOLA - Todos os direitos reservados.</p>
+                <p>Autor Principal: Adilson Lourenço da Costa Santa-Rosa</p>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 text-center sm:text-right">
+                <span>E-mail: alexcostasantarosa@gmail.com</span>
+                <span>Contactos: 926267207 / 955765673</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE LOGIN (COM VALIDAÇÃO DE QUALQUER DADO INSERIDO) -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center font-bold mx-auto">
+                    <i data-lucide="user-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">Acesso Demonstração</h3>
+                <p class="text-xs text-slate-500">
+                    Insira qualquer Usuário e Senha. Qualquer informação inserida será validada no sistema.
+                </p>
+            </div>
+
+            <form id="loginForm" onsubmit="handleDemoLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Usuário / E-mail:</label>
+                    <input type="text" id="demoUser" placeholder="Insira o seu usuário..." class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    <span id="userError" class="text-xs text-red-500 hidden mt-1">Por favor, introduza um usuário válido.</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Senha:</label>
+                    <input type="password" id="demoPass" placeholder="Insira a sua senha..." class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    <span id="passError" class="text-xs text-red-500 hidden mt-1">Por favor, introduza uma senha.</span>
+                </div>
+
+                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                    <i data-lucide="log-in" class="w-5 h-5"></i>
+                    <span>ENTRAR NA PLATAFORMA</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE LÓGICA E INTERATIVIDADE -->
+    <script>
+        // Inicializar Ícones
+        lucide.createIcons();
+
+        // Modal de Login Handlers
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        // Validação Dinâmica de Login Demo (Aceita qualquer valor preenchido)
+        function handleDemoLogin(event) {
+            event.preventDefault();
+            const user = document.getElementById('demoUser').value.trim();
+            const pass = document.getElementById('demoPass').value.trim();
+            const userErr = document.getElementById('userError');
+            const passErr = document.getElementById('passError');
+
+            let isValid = true;
+
+            if (!user) {
+                userErr.classList.remove('hidden');
+                isValid = false;
+            } else {
+                userErr.classList.add('hidden');
+            }
+
+            if (!pass) {
+                passErr.classList.remove('hidden');
+                isValid = false;
+            } else {
+                passErr.classList.add('hidden');
+            }
+
+            if (isValid) {
+                alert(`Login efetuado com sucesso!\nSessão de demonstração validada para o usuário: "${user}".`);
+                closeLoginModal();
+            }
+        }
+
+        // Alternar entre Cadeira Metálica e Projeto Livre
+        function toggleProjectMode() {
+            const mode = document.getElementById('projectSelect').value;
+            const chairFields = document.getElementById('chairFields');
+            const freeFields = document.getElementById('freeFields');
+            const projTag = document.getElementById('projTag');
+
+            if (mode === 'chair') {
+                chairFields.classList.remove('hidden');
+                freeFields.classList.add('hidden');
+                projTag.innerText = 'Cadeira Metálica';
+            } else {
+                chairFields.classList.add('hidden');
+                freeFields.classList.remove('hidden');
+                projTag.innerText = 'Projeto Livre / Customizado';
+            }
+            calculateProject();
+        }
+
+        // Algoritmo de Cálculo Mecânico Autónomo (Cadeira + Projeto Livre)
+        function calculateProject() {
+            const mode = document.getElementById('projectSelect').value;
+            const tubePricePerBar = parseFloat(document.getElementById('tubeType').value) || 8500;
+            let totalCm = 0;
+
+            if (mode === 'chair') {
+                const legH = parseFloat(document.getElementById('legHeight').value) || 0;
+                const seatW = parseFloat(document.getElementById('seatWidth').value) || 0;
+                const seatD = parseFloat(document.getElementById('seatDepth').value) || 0;
+                const backH = parseFloat(document.getElementById('backHeight').value) || 0;
+
+                // Algoritmo mantido da cadeira: 4 pernas + assento + encosto + travessas
+                totalCm = (legH * 4) + (seatW * 2 + seatD * 2) + (backH * 2 + seatW) + (seatW * 2);
+            } else {
+                // Cálculo para Projeto Livre
+                const directMeters = parseFloat(document.getElementById('directTubeMeters').value) || 0;
+                
+                if (directMeters > 0) {
+                    totalCm = directMeters * 100;
+                } else {
+                    const freeH = parseFloat(document.getElementById('freeHeight').value) || 0;
+                    const freeW = parseFloat(document.getElementById('freeWidth').value) || 0;
+                    const freeL = parseFloat(document.getElementById('freeLength').value) || 0;
+                    const qty = parseFloat(document.getElementById('freeQty').value) || 1;
+
+                    // Perímetro da estrutura 3D retangular (4 * Altura + 4 * Largura + 4 * Comprimento) x Quantidade
+                    totalCm = ((freeH * 4) + (freeW * 4) + (freeL * 4)) * qty;
+                }
+            }
+
+            const totalMeters = (totalCm / 100) * 1.05; // 5% de margem de perda por corte
+            const barsNeeded = Math.max(1, Math.ceil(totalMeters / 6));
+
+            const electrodeKg = (totalMeters * 0.05).toFixed(2);
+            const discsCount = Math.max(2, Math.ceil(totalMeters / 3));
+
+            const totalTubeCost = barsNeeded * tubePricePerBar;
+            const totalConsumablesCost = (parseFloat(electrodeKg) * 2500) + (discsCount * 1200);
+            const grandTotal = totalTubeCost + totalConsumablesCost;
+
+            // Atualização da Interface
+            document.getElementById('resTotalMeters').innerText = `${totalMeters.toFixed(2).replace('.', ',')} metros`;
+            document.getElementById('resBarsCount').innerText = `${barsNeeded} Barra${barsNeeded > 1 ? 's' : ''}`;
+            document.getElementById('resElectrode').innerText = `${electrodeKg.replace('.', ',')} kg`;
+            document.getElementById('resDiscs').innerText = `${discsCount} Unidades`;
+            document.getElementById('resTotalPrice').innerText = `${grandTotal.toLocaleString('pt-AO')} Kz`;
+        }
+
+        // Formulário de Parcerias
+        function handlePartnerSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('partnerName').value;
+            const org = document.getElementById('partnerOrg').value;
+            const type = document.getElementById('partnerType').value;
+
+            alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${type}\n\nUma notificação direta foi enviada para o e-mail do Autor Principal (alexcostasantarosa@gmail.com).`);
+            document.getElementById('partnerForm').reset();
+        }
+    </script>
+</body>
+</html>
