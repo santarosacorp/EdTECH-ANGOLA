@@ -18,140 +18,69 @@
 
     <!-- HEADER / MENU PRINCIPAL -->
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="20%" height="auto">
-  <defs>
-    <!-- Gradiente Principal (Indigo / Púrpura Futurista) -->
-    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4F46E5" />
-      <stop offset="50%" stop-color="#7C3AED" />
-      <stop offset="100%" stop-color="#2563EB" />
-    </linearGradient>
-
-    <!-- Gradiente Tech (Ciano Neon / Azul Elétrico) -->
-    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06B6D4" />
-      <stop offset="100%" stop-color="#3B82F6" />
-    </linearGradient>
-
-    <!-- Gradiente Ouro / Energia (Âmbar / Laranja) -->
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B" />
-      <stop offset="100%" stop-color="#EF4444" />
-    </linearGradient>
-
-    <!-- Sombras e Brilho -->
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.10"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.04"/>
-    </filter>
-
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4F46E5" flood-opacity="0.25"/>
-    </filter>
-
-    <!-- ESTILOS E ANIMAÇÕES CSS -->
-    <style>
-      /* Levitação 3D Suave do Símbolo */
-      .floating-symbol {
-        transform-origin: 120px 92px;
-        animation: floatAnim 4s ease-in-out infinite alternate;
-      }
-
-      /* Pulso do Núcleo de Energia/Luz */
-      .pulse-glow {
-        transform-origin: 120px 58px;
-        animation: pulseAnim 2.2s ease-in-out infinite alternate;
-      }
-
-      /* Fluxo de Dados nas Trilhas de Circuito */
-      .line-flow {
-        stroke-dasharray: 8 4;
-        animation: flowAnim 2s linear infinite;
-      }
-
-      /* Brilho da Borla do Chapéu Digital */
-      .sparkle {
-        animation: sparkleAnim 1.8s ease-in-out infinite alternate;
-      }
-
-      /* Keyframes */
-      @keyframes floatAnim {
-        0% { transform: translateY(2px); }
-        100% { transform: translateY(-6px); }
-      }
-
-      @keyframes pulseAnim {
-        0% { transform: scale(0.9); opacity: 0.8; }
-        100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 8px #06B6D4); }
-      }
-
-      @keyframes flowAnim {
-        from { stroke-dashoffset: 24; }
-        to { stroke-dashoffset: 0; }
-      }
-
-      @keyframes sparkleAnim {
-        0% { opacity: 0.4; transform: scale(0.8); }
-        100% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #F59E0B); }
-      }
-    </style>
-  </defs>
-
-  <!-- 1. CONTAINER QUADRADO ARREDONDADO COM FUNDO BRANCO PURO -->
-  <rect x="10" y="10" width="220" height="220" rx="52" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
-
-  <!-- 2. ISOTIPO INTEGRADO (CHAPÉU DE GRADUAÇÃO DIGITAL + MONOGRAMA 'E' EM CIRCUITO + SETA DE EVOLUÇÃO) -->
-  <g class="floating-symbol" filter="url(#glow)">
-    
-    <!-- Chapéu de Formatura Digital (Mortarboard / Portal 3D) -->
-    <!-- Topo do Chapéu (Losango 3D) -->
-    <polygon points="120,38 168,58 120,78 72,58" fill="url(#primaryGrad)"/>
-    <polygon points="120,44 158,58 120,72 82,58" fill="#1E1B4B" opacity="0.5"/>
-
-    <!-- Base do Chapéu (Faixa de Cap) -->
-    <path d="M 82 64 L 82 82 C 82 92, 99 98, 120 98 C 141 98, 158 92, 158 82 L 158 64" fill="none" stroke="url(#primaryGrad)" stroke-width="5" stroke-linecap="round"/>
-
-    <!-- Borla/Fita do Chapéu em Circuito Digital -->
-    <path class="line-flow" d="M 168 58 L 178 74 L 178 102" fill="none" stroke="url(#goldGrad)" stroke-width="2.8" stroke-linecap="round"/>
-    <circle cx="178" cy="104" r="4.5" fill="#F59E0B" class="sparkle"/>
-
-    <!-- Monograma 'E' e Trilhas Futuristas -->
-    <!-- Barra Superior do E (Seta Agressiva de Evolução) -->
-    <path d="M 82 108 L 148 108 L 135 118 L 82 118 Z" fill="url(#cyanGrad)"/>
-    
-    <!-- Haste Vertical do E -->
-    <path d="M 82 108 L 82 146" stroke="url(#cyanGrad)" stroke-width="5.5" stroke-linecap="round"/>
-
-    <!-- Barra Central do E com Nó de Dados -->
-    <path d="M 82 127 L 132 127" stroke="url(#cyanGrad)" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="132" cy="127" r="3.5" fill="#06B6D4"/>
-
-    <!-- Barra Inferior do E -->
-    <path d="M 82 136 L 154 136 L 139 146 L 82 146 Z" fill="url(#primaryGrad)"/>
-
-    <!-- Ponto Luminoso Central (Aura de Ciência & Conhecimento) -->
-    <g class="pulse-glow">
-      <circle cx="120" cy="58" r="7" fill="#06B6D4"/>
-      <circle cx="120" cy="58" r="3" fill="#FFFFFF"/>
-    </g>
-  </g>
-
-  <!-- 3. MARCA NOMINAL PROMINENTE: EdTECH -->
-  <g transform="translate(120, 185)">
-  </g>
-</svg>          
-        </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-wider text-amber-400">EdTECH</span>
-                    <span class="text-xl font-bold text-white"> ANGOLA</span>
-                    <span class="block text-xs text-slate-400">Capacitação Técnica & Científica Gratuita</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3 min-w-0 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" class="w-14 h-14 sm:w-16 sm:h-16" aria-label="Logo EdTECH ANGOLA">
+                    <defs>
+                        <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4F46E5" />
+                            <stop offset="50%" stop-color="#7C3AED" />
+                            <stop offset="100%" stop-color="#2563EB" />
+                        </linearGradient>
+                        <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#06B6D4" />
+                            <stop offset="100%" stop-color="#3B82F6" />
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F59E0B" />
+                            <stop offset="100%" stop-color="#EF4444" />
+                        </linearGradient>
+                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.10"/>
+                            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.04"/>
+                        </filter>
+                        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4F46E5" flood-opacity="0.25"/>
+                        </filter>
+                        <style>
+                            .floating-symbol { transform-origin: 120px 92px; animation: floatAnim 4s ease-in-out infinite alternate; }
+                            .pulse-glow { transform-origin: 120px 58px; animation: pulseAnim 2.2s ease-in-out infinite alternate; }
+                            .line-flow { stroke-dasharray: 8 4; animation: flowAnim 2s linear infinite; }
+                            .sparkle { animation: sparkleAnim 1.8s ease-in-out infinite alternate; }
+                            @keyframes floatAnim { 0% { transform: translateY(2px); } 100% { transform: translateY(-6px); } }
+                            @keyframes pulseAnim { 0% { transform: scale(0.9); opacity: 0.8; } 100% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 8px #06B6D4); } }
+                            @keyframes flowAnim { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+                            @keyframes sparkleAnim { 0% { opacity: 0.4; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #F59E0B); } }
+                        </style>
+                    </defs>
+                    <rect x="10" y="10" width="220" height="220" rx="52" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+                    <g class="floating-symbol" filter="url(#glow)">
+                        <polygon points="120,38 168,58 120,78 72,58" fill="url(#primaryGrad)"/>
+                        <polygon points="120,44 158,58 120,72 82,58" fill="#1E1B4B" opacity="0.5"/>
+                        <path d="M 82 64 L 82 82 C 82 92, 99 98, 120 98 C 141 98, 158 92, 158 82 L 158 64" fill="none" stroke="url(#primaryGrad)" stroke-width="5" stroke-linecap="round"/>
+                        <path class="line-flow" d="M 168 58 L 178 74 L 178 102" fill="none" stroke="url(#goldGrad)" stroke-width="2.8" stroke-linecap="round"/>
+                        <circle cx="178" cy="104" r="4.5" fill="#F59E0B" class="sparkle"/>
+                        <path d="M 82 108 L 148 108 L 135 118 L 82 118 Z" fill="url(#cyanGrad)"/>
+                        <path d="M 82 108 L 82 146" stroke="url(#cyanGrad)" stroke-width="5.5" stroke-linecap="round"/>
+                        <path d="M 82 127 L 132 127" stroke="url(#cyanGrad)" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="132" cy="127" r="3.5" fill="#06B6D4"/>
+                        <path d="M 82 136 L 154 136 L 139 146 L 82 146 Z" fill="url(#primaryGrad)"/>
+                        <g class="pulse-glow">
+                            <circle cx="120" cy="58" r="7" fill="#06B6D4"/>
+                            <circle cx="120" cy="58" r="3" fill="#FFFFFF"/>
+                        </g>
+                    </g>
+                </svg>
+                <div class="leading-tight min-w-0">
+                    <div class="flex items-baseline gap-1 sm:gap-2 flex-wrap">
+                        <span class="text-lg sm:text-xl font-extrabold tracking-wider text-amber-400">EdTECH</span>
+                        <span class="text-lg sm:text-xl font-bold text-white">ANGOLA</span>
+                    </div>
+                    <span class="block text-[10px] sm:text-xs text-slate-400">Capacitação Técnica &amp; Científica Gratuita</span>
                 </div>
-         </div>
+            </div>
 
-            <!-- MENU LATERAL / HUB DE NAVEGAÇÃO -->
-            <nav class="hidden md:flex space-x-1 lg:space-x-4 text-sm font-semibold">
+            <nav class="hidden md:flex items-center justify-center flex-1 space-x-1 lg:space-x-2 text-sm font-semibold">
                 <a href="#aprender" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                     <i data-lucide="book-open" class="w-4 h-4"></i>
                     <span>Aprender</span>
@@ -170,9 +99,8 @@
                 </a>
             </nav>
 
-            <!-- BOTÃO ENTRAR (SISTEMA DE VALIDAÇÃO DEMO) -->
-            <div class="flex items-center space-x-3">
-                <button type="submit" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center space-x-2">
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <button type="button" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center space-x-2">
                     <i data-lucide="log-in" class="w-4 h-4"></i>
                     <span>ENTRAR</span>
                 </button>
@@ -185,7 +113,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
                 <div class="inline-flex items-center space-x-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 px-3 py-1 rounded-full text-xs font-semibold">
-                    <span>🎉 Acesso Livre & Sem Burocracia</span>
+                    <span>🎉 Acesso Livre &amp; Sem Burocracia</span>
                 </div>
                 <h1 class="text-4xl sm:text-5xl font-black leading-tight">
                     Aprenda, Simule e Crie Projetos de <span class="text-amber-400">Eletrônica, Eletricidade e Mecânica</span>.
@@ -216,12 +144,12 @@
                     </div>
                     <div>
                         <h3 class="text-xl font-bold text-white">Adilson Lourenço da Costa Santa-Rosa</h3>
-                        <p class="text-amber-400 text-sm font-medium">Engenharia Mecânica & Inovação Tecnológica</p>
+                        <p class="text-amber-400 text-sm font-medium">Engenharia Mecânica &amp; Inovação Tecnológica</p>
                         <p class="text-slate-400 text-xs">Lobito, Benguela - Angola</p>
                     </div>
                 </div>
                 <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e construir soluções tecnológicas reais sem barreiras financeiras."
+                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e criar soluções reais com autonomia e qualidade."
                 </p>
                 <div class="space-y-3 pt-4 border-t border-slate-700/80 text-sm">
                     <div class="flex items-center space-x-3 text-slate-300">
@@ -264,7 +192,7 @@
                     <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center">
                         <i data-lucide="sparkles" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900">Ensino Gamificado & Profissional</h3>
+                    <h3 class="text-lg font-bold text-slate-900">Ensino Gamificado &amp; Profissional</h3>
                     <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
                         <li>Vídeos interativos com Inteligência Artificial para crianças.</li>
                         <li>Ensino intensivo com simulações industriais para adultos.</li>
@@ -276,7 +204,7 @@
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
                         <i data-lucide="database" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900">Cálculo Autônomo & B2B</h3>
+                    <h3 class="text-lg font-bold text-slate-900">Cálculo Autônomo &amp; B2B</h3>
                     <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
                         <li>Cálculo de estruturas para qualquer projeto ou dimensão.</li>
                         <li>Conexão direta com a base de dados de fornecedores.</li>
@@ -293,7 +221,7 @@
             <div class="border-b border-slate-300 pb-4 flex flex-col md:flex-row md:items-end justify-between">
                 <div>
                     <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Hub Integrado</span>
-                    <h2 class="text-3xl font-extrabold text-slate-900">Aprender, Praticar & Testar</h2>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Aprender, Praticar &amp; Testar</h2>
                 </div>
                 <p class="text-slate-600 text-sm mt-2 md:mt-0">Escolha uma área para iniciar os testes imediatamente.</p>
             </div>
@@ -360,21 +288,17 @@
         <div class="max-w-7xl mx-auto space-y-8">
             <div class="border-b border-slate-200 pb-4">
                 <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Desenvolvimento Livre e Inteligente</span>
-                <h2 class="text-3xl font-extrabold text-slate-900">Criar Projetos Mecânicos & Cálculo de Materiais</h2>
+                <h2 class="text-3xl font-extrabold text-slate-900">Criar Projetos Mecânicos &amp; Cálculo de Materiais</h2>
                 <p class="text-slate-600 text-sm mt-1">
                     Cálculo autónomo para a fabricação de cadeiras ou qualquer tipo de estrutura metálica personalizada.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- FORMULÁRIO DE CONFIGURAÇÃO DE PROJETO -->
                 <div class="lg:col-span-5 bg-slate-50 p-6 rounded-xl border border-slate-300 space-y-5 shadow-sm">
-                    
-                    <!-- SELETOR DE MODO DE PROJETO -->
                     <div>
                         <label class="block font-bold text-slate-900 text-sm uppercase mb-2">Selecione o Tipo de Projeto:</label>
-                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none">
                             <option value="chair">Fabricação de Cadeira Metálica (Predefinido)</option>
                             <option value="free">Projeto Livre / Customizado (Qualquer Estrutura)</option>
                         </select>
@@ -382,7 +306,6 @@
 
                     <hr class="border-slate-200">
 
-                    <!-- OPÇÃO 1: CAMPOS ESPECÍFICOS PARA CADEIRA METÁLICA -->
                     <div id="chairFields" class="space-y-3 text-sm">
                         <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Parâmetros da Cadeira:</h4>
                         <div>
@@ -403,7 +326,6 @@
                         </div>
                     </div>
 
-                    <!-- OPÇÃO 2: CAMPOS PARA PROJETO LIVRE -->
                     <div id="freeFields" class="space-y-3 text-sm hidden">
                         <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Dimensões da Estrutura Livre:</h4>
                         <div class="grid grid-cols-3 gap-2">
@@ -423,7 +345,7 @@
 
                         <div>
                             <label class="block font-semibold text-slate-700">Comprimento Total Direto do Tubo (Opcional - em metros):</label>
-                            <input type="number" id="directTubeMeters" placeholder="Ex: 15 (deixe em branco para calcular pelas dimensões)" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none text-xs">
+                            <input type="number" id="directTubeMeters" placeholder="Ex: 15 (deixe em branco para calcular pelas dimensões)" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
                         </div>
 
                         <div>
@@ -432,7 +354,6 @@
                         </div>
                     </div>
 
-                    <!-- TIPO DE TUBO -->
                     <div>
                         <label class="block font-semibold text-slate-700 text-sm">Perfil do Tubo Selecionado:</label>
                         <select id="tubeType" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none text-sm">
@@ -440,18 +361,17 @@
                             <option value="10200">Tubo Quadrado Aço Carbono 40x40mm (2.0mm)</option>
                             <option value="7800">Tubo Redondo 1 Polegada (1.5mm)</option>
                             <option value="12500">Perfil Retangular 50x30mm (2.0mm)</option>
-                              <option value="8000">Cantoneira 25x25mm (2.0mm)</option>
-                              <option value="15000">Cantoneira 30x30mm (2.0mm)</option>
+                            <option value="8000">Cantoneira 25x25mm (2.0mm)</option>
+                            <option value="15000">Cantoneira 30x30mm (2.0mm)</option>
                         </select>
                     </div>
 
                     <button onclick="calculateProject()" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
                         <i data-lucide="calculator" class="w-5 h-5"></i>
-                        <span>Calcular Materiais & Orçamento B2B</span>
+                        <span>Calcular Materiais &amp; Orçamento B2B</span>
                     </button>
                 </div>
 
-                <!-- PAINEL INTELIGENTE DE RESULTADOS DOS CÁLCULOS -->
                 <div class="lg:col-span-7 bg-slate-900 text-white p-6 rounded-xl space-y-6 shadow-xl">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <h4 class="font-bold text-amber-400 text-lg flex items-center space-x-2">
@@ -476,7 +396,7 @@
                     </div>
 
                     <div class="space-y-3 border-t border-slate-800 pt-4 text-sm">
-                        <h5 class="font-bold text-slate-200">Consumíveis & Equipamentos Necessários:</h5>
+                        <h5 class="font-bold text-slate-200">Consumíveis &amp; Equipamentos Necessários:</h5>
                         <ul class="text-slate-300 space-y-1.5 list-disc list-inside text-xs sm:text-sm">
                             <li><strong class="text-white">Eletrodos de Solda (E6013):</strong> <span id="resElectrode">0,35 kg</span></li>
                             <li><strong class="text-white">Discos de Corte (4.5 plg):</strong> <span id="resDiscs">2 Unidades</span></li>
@@ -484,7 +404,6 @@
                         </ul>
                     </div>
 
-                    <!-- PREÇO E BASE DE DADOS B2B -->
                     <div class="bg-slate-800/80 p-4 rounded-lg border border-amber-500/30 space-y-3">
                         <div class="flex justify-between items-center text-xs text-amber-400 font-bold uppercase tracking-wider">
                             <span>Integração B2B (Fornecedores em Angola)</span>
@@ -505,7 +424,7 @@
     <section id="parcerias" class="py-16 px-4 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto space-y-8">
             <div class="text-center space-y-3">
-                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Cooperação & Expansão</span>
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Cooperação &amp; Expansão</span>
                 <h2 class="text-3xl font-extrabold">Parcerias Institucionais e Investimentos</h2>
                 <p class="text-slate-300 text-sm sm:text-base">
                     Escolas, empresas, colaboradores e investidores podem encaminhar solicitações diretamente para o Autor Principal.
@@ -516,22 +435,22 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Representante:</label>
-                        <input type="text" id="partnerName" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <input type="text" id="partnerName" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Instituição / Empresa:</label>
-                        <input type="text" id="partnerOrg" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <input type="text" id="partnerOrg" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">E-mail de Contacto:</label>
-                        <input type="email" id="partnerEmail" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <input type="email" id="partnerEmail" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Telefone / WhatsApp:</label>
-                        <input type="tel" id="partnerPhone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <input type="tel" id="partnerPhone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
                 </div>
 
@@ -547,7 +466,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Mensagem:</label>
-                    <textarea id="partnerMsg" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm"></textarea>
+                    <textarea id="partnerMsg" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
@@ -612,10 +531,8 @@
 
     <!-- SCRIPT DE LÓGICA E INTERATIVIDADE -->
     <script>
-        // Inicializar Ícones
         lucide.createIcons();
 
-        // Modal de Login Handlers
         function openLoginModal() {
             document.getElementById('loginModal').classList.remove('hidden');
         }
@@ -623,7 +540,6 @@
             document.getElementById('loginModal').classList.add('hidden');
         }
 
-        // Validação Dinâmica de Login Demo (Aceita qualquer valor preenchido)
         function handleDemoLogin(event) {
             event.preventDefault();
             const user = document.getElementById('demoUser').value.trim();
@@ -653,7 +569,6 @@
             }
         }
 
-        // Alternar entre Cadeira Metálica e Projeto Livre
         function toggleProjectMode() {
             const mode = document.getElementById('projectSelect').value;
             const chairFields = document.getElementById('chairFields');
@@ -672,7 +587,6 @@
             calculateProject();
         }
 
-        // Algoritmo de Cálculo Mecânico Autónomo (Cadeira + Projeto Livre)
         function calculateProject() {
             const mode = document.getElementById('projectSelect').value;
             const tubePricePerBar = parseFloat(document.getElementById('tubeType').value) || 8500;
@@ -684,12 +598,10 @@
                 const seatD = parseFloat(document.getElementById('seatDepth').value) || 0;
                 const backH = parseFloat(document.getElementById('backHeight').value) || 0;
 
-                // Algoritmo mantido da cadeira: 4 pernas + assento + encosto + travessas
                 totalCm = (legH * 4) + (seatW * 2 + seatD * 2) + (backH * 2 + seatW) + (seatW * 2);
             } else {
-                // Cálculo para Projeto Livre
                 const directMeters = parseFloat(document.getElementById('directTubeMeters').value) || 0;
-                
+
                 if (directMeters > 0) {
                     totalCm = directMeters * 100;
                 } else {
@@ -698,12 +610,11 @@
                     const freeL = parseFloat(document.getElementById('freeLength').value) || 0;
                     const qty = parseFloat(document.getElementById('freeQty').value) || 1;
 
-                    // Perímetro da estrutura 3D retangular (4 * Altura + 4 * Largura + 4 * Comprimento) x Quantidade
                     totalCm = ((freeH * 4) + (freeW * 4) + (freeL * 4)) * qty;
                 }
             }
 
-            const totalMeters = (totalCm / 100) * 1.05; // 5% de margem de perda por corte
+            const totalMeters = (totalCm / 100) * 1.05;
             const barsNeeded = Math.max(1, Math.ceil(totalMeters / 6));
 
             const electrodeKg = (totalMeters * 0.05).toFixed(2);
@@ -713,7 +624,6 @@
             const totalConsumablesCost = (parseFloat(electrodeKg) * 2500) + (discsCount * 1200);
             const grandTotal = totalTubeCost + totalConsumablesCost;
 
-            // Atualização da Interface
             document.getElementById('resTotalMeters').innerText = `${totalMeters.toFixed(2).replace('.', ',')} metros`;
             document.getElementById('resBarsCount').innerText = `${barsNeeded} Barra${barsNeeded > 1 ? 's' : ''}`;
             document.getElementById('resElectrode').innerText = `${electrodeKg.replace('.', ',')} kg`;
@@ -721,7 +631,6 @@
             document.getElementById('resTotalPrice').innerText = `${grandTotal.toLocaleString('pt-AO')} Kz`;
         }
 
-        // Formulário de Parcerias
         function handlePartnerSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('partnerName').value;
