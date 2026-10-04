@@ -123,17 +123,15 @@
                         </button>
                         <div id="practiceMenu" class="practice-menu absolute left-0 top-full mt-2 w-52 rounded-xl border border-slate-700 bg-slate-800/95 p-2 shadow-2xl backdrop-blur-sm">
                             <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricity</a>
-                            <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electronics</a>
+                            <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Breadboard</a>
                             <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mechanics</a>
-                            <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Programação</a>
+                            <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Code Editor</a>
                         </div>
                     </div>
 
                     <a href="#simulador" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                         <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
-                        <a href="https://curvostudio.com/pt-br/simulator/motor-inducao-trifasico">
                         <span>Simulador / Testes</span>
-                        </a>
                     </a>
                     <a href="#criar" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                         <i data-lucide="compass" class="w-4 h-4"></i>
@@ -149,7 +147,7 @@
                     </button>
 
                     <!-- Login Button -->
-                    <button type="button" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center space-x-2">
+                    <button type="button" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center justify-center space-x-2">
                         <i data-lucide="log-in" class="w-4 h-4"></i>
                         <span class="hidden sm:inline">ENTRAR</span>
                     </button>
@@ -169,9 +167,9 @@
                     </a>
                     <div class="pl-6 mt-1 space-y-1">
                         <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricity</a>
-                        <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electronics</a>
+                        <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Breadboard</a>
                         <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mechanics</a>
-                        <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Programação</a>
+                        <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Code Editor</a>
                     </div>
                 </div>
                 <a href="#simulador" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-md hover:text-amber-400 hover:bg-slate-700 transition flex items-center space-x-2 text-sm font-medium">
@@ -227,7 +225,7 @@
                     </div>
                 </div>
                 <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e testar ideias em condições reais sem depender de laboratórios caros ou de acesso limitado."
+                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e testar ideias reais, apoiados por tecnologia e pensamento crítico."
                 </p>
                 <div class="space-y-3 pt-4 border-t border-slate-700/80 text-sm">
                     <div class="flex items-center space-x-3 text-slate-300">
@@ -376,7 +374,7 @@
                 <div class="lg:col-span-5 bg-slate-50 p-6 rounded-xl border border-slate-300 space-y-5 shadow-sm">
                     <div>
                         <label class="block font-bold text-slate-900 text-sm uppercase mb-2">Selecione o Tipo de Projeto:</label>
-                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none">
+                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                             <option value="chair">Fabricação de Cadeira Metálica (Predefinido)</option>
                             <option value="free">Projeto Livre / Customizado (Qualquer Estrutura)</option>
                         </select>
@@ -509,32 +507,35 @@
                 </p>
             </div>
 
-            <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-4">
+            <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-5">
+                <input type="hidden" name="_subject" value="Nova solicitação - EdTECH ANGOLA">
+                <input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua solicitação na plataforma EdTECH ANGOLA. Agradecemos o contacto e responderemos em breve.">
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Representante:</label>
-                        <input type="text" id="partnerName" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="text" id="partnerName" name="name" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Instituição / Empresa:</label>
-                        <input type="text" id="partnerOrg" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="text" id="partnerOrg" name="organization" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">E-mail de Contacto:</label>
-                        <input type="email" id="partnerEmail" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="email" id="partnerEmail" name="email" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Telefone / WhatsApp:</label>
-                        <input type="tel" id="partnerPhone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="tel" id="partnerPhone" name="phone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Tipo de Solicitação:</label>
-                    <select id="partnerType" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                    <select id="partnerType" name="type" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
                         <option>Parceria Escolar / Educacional</option>
                         <option>Parceria Empresarial B2B / Fornecedor</option>
                         <option>Investimento e Financiamento</option>
@@ -544,7 +545,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Mensagem:</label>
-                    <textarea id="partnerMsg" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                    <textarea id="partnerMsg" name="message" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm"></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
@@ -740,13 +741,19 @@
         }
 
         function handlePartnerSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('partnerName').value;
-            const org = document.getElementById('partnerOrg').value;
-            const type = document.getElementById('partnerType').value;
+            const name = document.getElementById('partnerName').value.trim();
+            const org = document.getElementById('partnerOrg').value.trim();
+            const email = document.getElementById('partnerEmail').value.trim();
+            const phone = document.getElementById('partnerPhone').value.trim();
+            const msg = document.getElementById('partnerMsg').value.trim();
 
-            alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${type}\n\nUma notificação direta foi enviada para o e-mail do Autor Principal (alexcostasantarosa@gmail.com).`);
-            document.getElementById('partnerForm').reset();
+            if (!name || !org || !email || !phone || !msg) {
+                alert('Por favor, preencha todos os campos antes de enviar a solicitação.');
+                event.preventDefault();
+                return;
+            }
+
+            alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${document.getElementById('partnerType').value}\n\nA confirmação automática foi ativada e a resposta do sistema foi enviada para o seu e-mail.`);
         }
     </script>
 </body>
