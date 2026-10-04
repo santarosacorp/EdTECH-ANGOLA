@@ -507,6 +507,18 @@
                 </p>
             </div>
 
+            <div id="successMessage" class="hidden rounded-2xl border border-emerald-400/50 bg-emerald-500/10 p-4 shadow-lg">
+                <div class="flex items-start gap-3">
+                    <div class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-emerald-300">Solicitação enviada com sucesso.</p>
+                        <p id="successMessageText" class="text-sm text-emerald-100">A sua mensagem foi recebida e encaminhada para alexcostasantarosa@gmail.com.</p>
+                    </div>
+                </div>
+            </div>
+
             <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-5">
                 <input type="hidden" name="_subject" value="Nova solicitação - EdTECH ANGOLA">
                 <input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua solicitação na plataforma EdTECH ANGOLA. Agradecemos o contacto e responderemos em breve.">
@@ -548,10 +560,16 @@
                     <textarea id="partnerMsg" name="message" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
-                    <i data-lucide="send" class="w-5 h-5"></i>
-                    <span>Enviar Solicitação ao Autor Principal</span>
-                </button>
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button type="submit" class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>Enviar Solicitação ao Autor Principal</span>
+                    </button>
+                    <a href="mailto:alexcostasantarosa@gmail.com?subject=Mensagem%20direta%20-%20EdTECH%20ANGOLA" class="flex-1 border border-amber-400 bg-transparent hover:bg-amber-500/10 text-amber-300 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span>Enviar mensagem direta</span>
+                    </a>
+                </div>
             </form>
         </div>
     </section>
@@ -649,6 +667,14 @@
             document.getElementById('loginModal').classList.add('hidden');
         }
 
+        function showSuccessMessage(message) {
+            const banner = document.getElementById('successMessage');
+            const text = document.getElementById('successMessageText');
+            text.textContent = message;
+            banner.classList.remove('hidden');
+            banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function handleDemoLogin(event) {
             event.preventDefault();
             const user = document.getElementById('demoUser').value.trim();
@@ -741,6 +767,7 @@
         }
 
         function handlePartnerSubmit(event) {
+            event.preventDefault();
             const name = document.getElementById('partnerName').value.trim();
             const org = document.getElementById('partnerOrg').value.trim();
             const email = document.getElementById('partnerEmail').value.trim();
@@ -749,11 +776,14 @@
 
             if (!name || !org || !email || !phone || !msg) {
                 alert('Por favor, preencha todos os campos antes de enviar a solicitação.');
-                event.preventDefault();
                 return;
             }
 
-            alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${document.getElementById('partnerType').value}\n\nA confirmação automática foi ativada e a resposta do sistema foi enviada para o seu e-mail.`);
+            const form = document.getElementById('partnerForm');
+            showSuccessMessage('A sua mensagem foi recebida e encaminhada com sucesso para alexcostasantarosa@gmail.com.');
+            setTimeout(() => {
+                form.submit();
+            }, 1000);
         }
     </script>
 </body>
