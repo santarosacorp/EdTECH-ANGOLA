@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdTECH ANGOLA - Módulo de Aprendizagem de Programação</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#06b6d4',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#1e1b4b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Estilização da barra de rolagem e do terminal */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
+    
+    .code-editor {
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- HEADER NAVEGAÇÃO -->
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo SVG EdTECH -->
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-white p-1 shadow-lg shadow-cyan-500/10 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" class="w-full h-full">
+            <defs>
+              <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4F46E5" /><stop offset="100%" stop-color="#2563EB" />
+              </linearGradient>
+              <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06B6D4" /><stop offset="100%" stop-color="#3B82F6" />
+              </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="220" height="220" rx="52" fill="#FFFFFF"/>
+            <g>
+              <polygon points="120,38 168,58 120,78 72,58" fill="url(#primaryGrad)"/>
+              <path d="M 82 64 L 82 82 C 82 92, 99 98, 120 98 C 141 98, 158 92, 158 82 L 158 64" fill="none" stroke="url(#primaryGrad)" stroke-width="5" stroke-linecap="round"/>
+              <path d="M 82 108 L 148 108 L 135 118 L 82 118 Z" fill="url(#cyanGrad)"/>
+              <path d="M 82 108 L 82 146" stroke="url(#cyanGrad)" stroke-width="5.5" stroke-linecap="round"/>
+              <path d="M 82 127 L 132 127" stroke="url(#cyanGrad)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="132" cy="127" r="3.5" fill="#06B6D4"/>
+              <path d="M 82 136 L 154 136 L 139 146 L 82 146 Z" fill="url(#primaryGrad)"/>
+              <circle cx="120" cy="58" r="6" fill="#06B6D4"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white">Ed<span class="text-cyan-400">TECH</span> <span class="text-xs px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">ANGOLA</span></span>
+          <p class="text-xs text-slate-400">Plataforma de Capacitação Técnica & STEM</p>
+        </div>
+      </div>
+
+      <!-- Barra de Progresso Global do Curso -->
+      <div class="hidden lg:flex items-center gap-4 bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700/50">
+        <div class="text-xs text-right">
+          <p class="font-semibold text-slate-200">Progresso do Módulo</p>
+          <p class="text-cyan-400 font-mono" id="progress-text">0 de 10 Aulas (0%)</p>
+        </div>
+        <div class="w-32 bg-slate-700 h-2.5 rounded-full overflow-hidden">
+          <div id="progress-bar" class="bg-gradient-to-r from-cyan-500 to-blue-600 h-full w-0 transition-all duration-500"></div>
+        </div>
+      </div>
+
+      <!-- Autor & Modo Offline -->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-950 text-emerald-400 border border-emerald-800">
+          <i data-lucide="wifi-off" class="w-3.5 h-3.5"></i> Modo Offline Pronto
+        </span>
+        <a href="#fundador" class="text-xs text-slate-300 hover:text-cyan-400 transition-colors hidden md:block text-right">
+          <p class="font-semibold text-white">Adilson Santa-Rosa</p>
+          <p class="text-[10px] text-slate-400">Engenharia Mecânica (IP-UKB)</p>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 pt-12 pb-16 border-b border-slate-800 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-4">
+            <i data-lucide="code" class="w-4 h-4"></i> TRILHA COMPLETA DE PROGRAMAÇÃO & ENGENHARIA DE SOFTWARE
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-none mb-4">
+            Aprender Programação <br><span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Do Zero aos Sistemas Embarcados</span>
+          </h1>
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed mb-6">
+            Explore lógica de algoritmos em Portugol, automação em Python, controlo de hardware com C/C++, interfaces web e projetos industriais aplicados ao contexto tecnológico de Angola.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#simulador" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-5 py-3 rounded-xl shadow-lg shadow-cyan-500/20 transition-all text-sm">
+              <i data-lucide="play" class="w-4 h-4 fill-white"></i> Abrir Simulador Interativo
+            </a>
+            <a href="#quiz" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+              <i data-lucide="check-circle" class="w-4 h-4"></i> Testar Conhecimentos
+            </a>
+          </div>
+        </div>
+
+        <!-- Métrica de Níveis -->
+        <div class="w-full lg:w-80 bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-5 space-y-4">
+          <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+            <span>Estrutura do Curso</span>
+            <i data-lucide="layers" class="w-4 h-4 text-cyan-400"></i>
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-md bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">1</span>
+                <div>
+                  <p class="text-xs font-bold text-slate-200">Iniciante</p>
+                  <p class="text-[10px] text-slate-400">Lógica & Portugol (40h)</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono text-emerald-400">Nível I</span>
+            </div>
+
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-md bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs">2</span>
+                <div>
+                  <p class="text-xs font-bold text-slate-200">Intermédio</p>
+                  <p class="text-[10px] text-slate-400">Python & C/C++ (60h)</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono text-cyan-400">Nível II</span>
+            </div>
+
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-md bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">3</span>
+                <div>
+                  <p class="text-xs font-bold text-slate-200">Avançado</p>
+                  <p class="text-[10px] text-slate-400">Web, IoT & SQL (80h)</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono text-indigo-400">Nível III</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO PRINCIPAL (LAYOUT LATERAL) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+      <!-- MENU DE NAVEGAÇÃO RÁPIDA (SIDEBAR FIXA NO DESKTOP) -->
+      <aside class="lg:col-span-1 space-y-2 sticky top-24 h-fit bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">Índice dos Módulos</p>
+        <nav class="space-y-1 text-sm font-medium">
+          <a href="#logica" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="brain-circuit" class="w-4 h-4 text-cyan-400"></i> 1. Lógica & Portugol
+          </a>
+          <a href="#python" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="terminal" class="w-4 h-4 text-yellow-400"></i> 2. Linguagem Python
+          </a>
+          <a href="#cpp" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i> 3. C / C++ & Hardware
+          </a>
+          <a href="#web" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="globe" class="w-4 h-4 text-orange-400"></i> 4. Web Interativa
+          </a>
+          <a href="#algoritmos" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="binary" class="w-4 h-4 text-purple-400"></i> 5. Algoritmos & Big-O
+          </a>
+          <a href="#dados-git" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i> 6. SQL & Git
+          </a>
+          <a href="#projetos" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="wrench" class="w-4 h-4 text-red-400"></i> 7. Projetos Práticos
+          </a>
+          <a href="#simulador" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-cyan-400 bg-cyan-950/50 border border-cyan-800/50 transition-all font-semibold">
+            <i data-lucide="code-2" class="w-4 h-4"></i> 8. IDE & Simulador
+          </a>
+          <a href="#quiz" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all">
+            <i data-lucide="help-circle" class="w-4 h-4 text-amber-400"></i> 9. Teste de Avaliação
+          </a>
+        </nav>
+      </aside>
+
+      <!-- ÁREA DE CONTEÚDO EXPANDIDA -->
+      <div class="lg:col-span-3 space-y-12">
+
+        <!-- SEÇÃO 1: LÓGICA DE PROGRAMAÇÃO -->
+        <section id="logica" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400"><i data-lucide="brain-circuit" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">1. Lógica de Programação & Portugol</h2>
+                <p class="text-xs text-slate-400">Pensamento computacional, variáveis e estruturas de controlo</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <h4 class="text-xs font-bold text-cyan-400 uppercase tracking-wide mb-2">4 Pilares Computacionais</h4>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                <li><strong class="text-white">Decomposição:</strong> Divisão em subproblemas menor.</li>
+                <li><strong class="text-white">Padrões:</strong> Identificação de repetições.</li>
+                <li><strong class="text-white">Abstração:</strong> Foco no modelo essencial.</li>
+                <li><strong class="text-white">Algoritmos:</strong> Sequência finita e precisa de passos.</li>
+              </ul>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <h4 class="text-xs font-bold text-cyan-400 uppercase tracking-wide mb-2">Estruturas de Controlo</h4>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                <li><strong class="text-white">Condicional:</strong> Se / Senão / Escolha</li>
+                <li><strong class="text-white">Laço Enquanto:</strong> Testa a condição no início.</li>
+                <li><strong class="text-white">Laço Repita:</strong> Executa ao menos 1 vez.</li>
+                <li><strong class="text-white">Laço Para:</strong> Iterações contadas e fixas.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Exemplo Portugol -->
+          <div class="space-y-2">
+            <p class="text-xs font-semibold text-slate-300">Exemplo em Pseudocódigo (Portugol): Controlo de Temperatura</p>
+            <div class="code-editor p-4 rounded-xl font-mono text-xs text-slate-300 overflow-x-auto">
+<pre><span class="text-purple-400">Algoritmo</span> Sistema_Controlo_Temperatura
+<span class="text-purple-400">Var</span>
+    temperatura, limiteMaximo : <span class="text-yellow-400">Real</span>
+    sistemaAtivo : <span class="text-yellow-400">Logico</span>
+
+<span class="text-purple-400">Inicio</span>
+    limiteMaximo &lt;- <span class="text-cyan-400">45.0</span>
+    <span class="text-blue-400">Escreva</span>(<span class="text-emerald-400">"Introduza a temperatura do sensor (°C): "</span>)
+    <span class="text-blue-400">Leia</span>(temperatura)
+
+    <span class="text-purple-400">Se</span> (temperatura &gt; limiteMaximo) <span class="text-purple-400">Entao</span>
+        sistemaAtivo &lt;- <span class="text-cyan-400">Verdadeiro</span>
+        <span class="text-blue-400">Escreva</span>(<span class="text-emerald-400">"ALERTA: Ativar refrigeração de emergência!"</span>)
+    <span class="text-purple-400">Senao</span>
+        sistemaAtivo &lt;- <span class="text-cyan-400">Falso</span>
+        <span class="text-blue-400">Escreva</span>(<span class="text-emerald-400">"Temperatura dentro dos limites operacionais."</span>)
+    <span class="text-purple-400">FimSe</span>
+<span class="text-purple-400">FimAlgoritmo</span></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 2: PYTHON -->
+        <section id="python" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-yellow-500/10 text-yellow-400"><i data-lucide="terminal" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">2. Linguagem Python: Automação & Análise</h2>
+                <p class="text-xs text-slate-400">Sintaxe limpa, estruturas dinâmicas e processamento de dados</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-xs font-semibold text-slate-300">Análise de Sensores com Funções e Dicionários</p>
+            <div class="code-editor p-4 rounded-xl font-mono text-xs text-slate-300 overflow-x-auto">
+<pre><span class="text-purple-400">def</span> <span class="text-blue-400">analisar_leituras</span>(leituras, limite_alerta):
+    <span class="text-purple-400">if</span> <span class="text-purple-400">not</span> leituras:
+        <span class="text-purple-400">return</span> <span class="text-emerald-400">"Sem dados disponíveis."</span>
+    
+    media = <span class="text-yellow-400">sum</span>(leituras) / <span class="text-yellow-400">len</span>(leituras)
+    <span class="text-purple-400">return</span> {
+        <span class="text-emerald-400">"media"</span>: <span class="text-yellow-400">round</span>(media, 2),
+        <span class="text-emerald-400">"pico"</span>: <span class="text-yellow-400">max</span>(leituras),
+        <span class="text-emerald-400">"alerta"</span>: media &gt; limite_alerta
+    }
+
+# Amostras do sensor de temperatura
+amostras = [<span class="text-cyan-400">32.5</span>, <span class="text-cyan-400">34.0</span>, <span class="text-cyan-400">36.8</span>, <span class="text-cyan-400">41.2</span>, <span class="text-cyan-400">39.5</span>]
+relatorio = analisar_leituras(amostras, limite_alerta=<span class="text-cyan-400">35.0</span>)
+<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"Média: {relatorio['media']}°C | Alerta: {relatorio['alerta']}"</span>)</pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 3: C / C++ & HARDWARE -->
+        <section id="cpp" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i data-lucide="cpu" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">3. C / C++ & Programação de Hardware</h2>
+                <p class="text-xs text-slate-400">Ponteiros, gestão de memória e microcontroladores (Arduino/ESP32)</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-xs font-semibold text-slate-300">Controlo de Relé com Leitura Analógica (C++ / ESP32)</p>
+            <div class="code-editor p-4 rounded-xl font-mono text-xs text-slate-300 overflow-x-auto">
+<pre><span class="text-purple-400">const int</span> PIN_SENSOR = A0;
+<span class="text-purple-400">const int</span> PIN_RELE = 13;
+
+<span class="text-purple-400">void</span> <span class="text-blue-400">setup</span>() {
+    <span class="text-yellow-400">pinMode</span>(PIN_RELE, OUTPUT);
+    <span class="text-yellow-400">pinMode</span>(PIN_SENSOR, INPUT);
+    Serial.<span class="text-yellow-400">begin</span>(9600);
+}
+
+<span class="text-purple-400">void</span> <span class="text-blue-400">loop</span>() {
+    <span class="text-purple-400">int</span> leitura = <span class="text-yellow-400">analogRead</span>(PIN_SENSOR);
+    <span class="text-purple-400">if</span> (leitura &gt; <span class="text-cyan-400">600</span>) {
+        <span class="text-yellow-400">digitalWrite</span>(PIN_RELE, HIGH); <span class="text-slate-500">// Liga atuador</span>
+    } <span class="text-purple-400">else</span> {
+        <span class="text-yellow-400">digitalWrite</span>(PIN_RELE, LOW);
+    }
+    <span class="text-yellow-400">delay</span>(<span class="text-cyan-400">500</span>);
+}</pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 4: WEB INTERATIVA -->
+        <section id="web" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-orange-500/10 text-orange-400"><i data-lucide="globe" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">4. Desenvolvimento Web Interativo</h2>
+                <p class="text-xs text-slate-400">HTML5 semântico, estilização CSS3 e manipulação dinânima do DOM com JavaScript</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <!-- Componente Live Preview -->
+          <div class="bg-slate-950 rounded-xl border border-slate-800 p-4 space-y-3">
+            <p class="text-xs font-semibold text-slate-300">Demonstração Interativa em Tempo Real:</p>
+            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <p class="text-xs text-slate-400">Sensor de Humidade do Solo</p>
+                <p class="text-2xl font-mono font-bold text-emerald-400"><span id="demo-humidade">65</span>%</p>
+              </div>
+              <button onclick="atualizarHumidadeDemo()" class="w-full sm:w-auto px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Ler Sensor (JS)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 5: ALGORITMOS & BIG-O -->
+        <section id="algoritmos" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-purple-500/10 text-purple-400"><i data-lucide="binary" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">5. Estrutura de Dados & Notação Big-O</h2>
+                <p class="text-xs text-slate-400">Análise de complexidade e algoritmo de Pesquisa Binária</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-950 text-slate-300 border-b border-slate-800">
+                  <th class="p-2.5 font-bold">Complexidade</th>
+                  <th class="p-2.5 font-bold">Denominação</th>
+                  <th class="p-2.5 font-bold">Exemplo Prático</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-400">
+                <tr><td class="p-2.5 font-mono text-cyan-400">O(1)</td><td>Constante</td><td>Acesso direto ao elemento de um array pelo índice.</td></tr>
+                <tr><td class="p-2.5 font-mono text-emerald-400">O(log n)</td><td>Logarítmica</td><td>Pesquisa Binária em lista ordenada.</td></tr>
+                <tr><td class="p-2.5 font-mono text-yellow-400">O(n)</td><td>Linear</td><td>Pesquisa sequencial elemento a elemento.</td></tr>
+                <tr><td class="p-2.5 font-mono text-red-400">O(n²)</td><td>Quadrática</td><td>Loops aninhados (Bubble Sort simples).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 6: SQL & GIT -->
+        <section id="dados-git" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i data-lucide="database" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">6. Bases de Dados SQL & Controlo Git</h2>
+                <p class="text-xs text-slate-400">Modelagem relacional e fluxo de versionamento de software</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- SQL -->
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-slate-300">Consulta SQL Relacional</p>
+              <div class="code-editor p-3 rounded-xl font-mono text-xs text-slate-300">
+<pre><span class="text-purple-400">SELECT</span> e.nome, c.nome_curso 
+<span class="text-purple-400">FROM</span> estudantes e
+<span class="text-purple-400">JOIN</span> matriculas c 
+  <span class="text-purple-400">ON</span> e.id = c.id_estudante
+<span class="text-purple-400">WHERE</span> e.provincia = <span class="text-emerald-400">'Benguela'</span>;</pre>
+              </div>
+            </div>
+
+            <!-- GIT -->
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-slate-300">Comandos Git do Terminal</p>
+              <div class="code-editor p-3 rounded-xl font-mono text-xs text-slate-300">
+<pre><span class="text-slate-500"># Criar e versionar projeto</span>
+git init
+git add .
+git commit -m <span class="text-emerald-400">"feat: módulo IoT EdTECH"</span>
+git push origin main</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 7: PROJETOS PRÁTICOS -->
+        <section id="projetos" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-red-500/10 text-red-400"><i data-lucide="wrench" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">7. Projetos Práticos Integrados</h2>
+                <p class="text-xs text-slate-400">Aplicações reais de Engenharia e Automação Industrial</p>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer hover:text-white">
+              <input type="checkbox" onchange="toggleModule(this)" class="w-4 h-4 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0"> Concluído
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Projeto 1</span>
+              <h4 class="text-sm font-bold text-white">Disjuntor Inteligente All-in-One</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Algoritmo de monitorização e corte preventivo automático de carga elétrica para proteção de redes de baixa e média tensão.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Projeto 2</span>
+              <h4 class="text-sm font-bold text-white">Calculadora Solar para Estufas</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Dimensionamento do tempo de autonomia de baterias e módulos fotovoltaicos para irrigação automatizada em explorações agrícolas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 8: IDE & SIMULADOR INTERATIVO -->
+        <section id="simulador" class="bg-slate-900 border border-cyan-800/60 rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl shadow-cyan-950/20">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-cyan-500/20 text-cyan-400"><i data-lucide="code-2" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">8. IDE & Executador Interativo de Código</h2>
+                <p class="text-xs text-slate-400">Testar e simular código diretamente no navegador</p>
+              </div>
+            </div>
+
+            <!-- Seleção de Linguagem -->
+            <select id="code-lang" onchange="loadPresetCode()" class="bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 rounded-lg px-3 py-2 outline-none focus:border-cyan-500">
+              <option value="js">JavaScript (Navegador)</option>
+              <option value="python">Python (Simulado)</option>
+            </select>
+          </div>
+
+          <!-- Caixa de Código e Consola -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                <span>Editor de Código</span>
+                <span class="text-[10px] text-slate-500">Edite o código livremente</span>
+              </label>
+              <textarea id="editor-input" class="w-full h-56 p-3 code-editor font-mono text-xs text-slate-200 rounded-xl outline-none focus:border-cyan-500 resize-none leading-relaxed" spellcheck="false"></textarea>
+              <button onclick="executarCodigoSimulado()" class="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-4 h-4 fill-white"></i> Executar Código (F5)
+              </button>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">Consola de Saída (Terminal)</label>
+              <div id="console-output" class="w-full h-56 p-3 bg-black font-mono text-xs text-emerald-400 rounded-xl border border-slate-800 overflow-y-auto whitespace-pre-wrap">
+> Terminal EdTECH iniciado.
+> Clique em "Executar Código" para ver os resultados aqui...
+              </div>
+              <button onclick="limparTerminal()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition-all">
+                Limpar Consola
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 9: QUIZ DE AVALIAÇÃO INTERATIVO -->
+        <section id="quiz" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i data-lucide="help-circle" class="w-6 h-6"></i></span>
+              <div>
+                <h2 class="text-xl font-extrabold text-white">9. Teste de Avaliação de Conhecimento</h2>
+                <p class="text-xs text-slate-400">Valide os conceitos aprendidos ao longo da trilha</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-slate-700" id="quiz-score">Score: - / 3</span>
+          </div>
+
+          <form id="quiz-form" class="space-y-6" onsubmit="event.preventDefault(); verificarQuiz();">
+            <!-- Pergunta 1 -->
+            <div class="space-y-2">
+              <p class="text-xs font-bold text-slate-200">1. Qual das opções descreve a mutabilidade em Python?</p>
+              <div class="space-y-1.5 text-xs text-slate-300">
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q1" value="A" class="text-cyan-500"> A) Listas são imutáveis, Tuplas são mutáveis.
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q1" value="B" class="text-cyan-500"> B) Strings e Tuplas são imutáveis; Listas são mutáveis.
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q1" value="C" class="text-cyan-500"> C) Todos os dados em Python são mutáveis por padrão.
+                </label>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="space-y-2">
+              <p class="text-xs font-bold text-slate-200">2. No contexto de C/C++, qual é a função do operador `&` em `&variavel`?</p>
+              <div class="space-y-1.5 text-xs text-slate-300">
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q2" value="A" class="text-cyan-500"> A) Realizar uma operação lógica AND.
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q2" value="B" class="text-cyan-500"> B) Multiplicar a variável por ela própria.
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q2" value="C" class="text-cyan-500"> C) Retornar o endereço de memória da variável.
+                </label>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="space-y-2">
+              <p class="text-xs font-bold text-slate-200">3. Qual é a complexidade de busca numa tabela Hash bem dimensionada?</p>
+              <div class="space-y-1.5 text-xs text-slate-300">
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q3" value="A" class="text-cyan-500"> A) O(1)
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q3" value="B" class="text-cyan-500"> B) O(n)
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-950 border border-slate-800 hover:border-slate-700 cursor-pointer">
+                  <input type="radio" name="q3" value="C" class="text-cyan-500"> C) O(n²)
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs transition-all">
+              Validar Respostas
+            </button>
+          </form>
+
+          <div id="quiz-result" class="hidden p-4 rounded-xl text-xs font-semibold"></div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ & INFORMAÇÕES DO FUNDADOR -->
+  <footer id="fundador" class="bg-slate-900 border-t border-slate-800 mt-20 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Coluna 1: EdTECH -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg font-black text-white">Ed<span class="text-cyan-400">TECH</span> ANGOLA</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Democratizando a educação científica e tecnológica em Angola através de simulação prática e plataformas acessíveis.
+        </p>
+      </div>
+
+      <!-- Coluna 2: Autor -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider">Fundador & Autor Principal</h4>
+        <p class="text-xs text-slate-300 font-semibold">Adilson Lourenço da Costa Santa-Rosa</p>
+        <p class="text-[11px] text-slate-400">Engenharia Mecânica — Instituto Politécnico da Universidade Katyavala Bwila (IP-UKB)</p>
+        <p class="text-[11px] text-slate-400">Benguela / Lobito, Angola</p>
+      </div>
+
+      <!-- Coluna 3: Contactos -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider">Contacto & Suporte</h4>
+        <ul class="text-xs text-slate-400 space-y-1">
+          <li>Email: <a href="mailto:alexcostasantarosa@gmail.com" class="text-cyan-400 hover:underline">alexcostasantarosa@gmail.com</a></li>
+          <li>Email Institucional: <a href="mailto:adilson.santarosa@edtechangola.ao" class="text-cyan-400 hover:underline">adilson.santarosa@edtechangola.ao</a></li>
+          <li>Telefones: +244 926 267 207 | +244 955 765 673</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-slate-800/60 text-center text-[10px] text-slate-500">
+      © 2026 EdTECH Angola. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT DE INTERATIVIDADE -->
+  <script>
+    // Inicializar Ícones
+    lucide.createIcons();
+
+    // 1. Acompanhamento de Progresso
+    let totalModules = 7;
+    let completedModules = 0;
+
+    function toggleModule(checkbox) {
+      if (checkbox.checked) {
+        completedModules++;
+      } else {
+        completedModules--;
+      }
+      
+      const percentage = Math.round((completedModules / totalModules) * 100);
+      document.getElementById('progress-bar').style.width = percentage + '%';
+      document.getElementById('progress-text').innerText = `${completedModules} de ${totalModules} Módulos (${percentage}%)`;
+    }
+
+    // 2. Demo Interativa de Humidade em JS
+    function atualizarHumidadeDemo() {
+      const valor = Math.floor(Math.random() * (90 - 40 + 1)) + 40;
+      document.getElementById('demo-humidade').innerText = valor;
+    }
+
+    // 3. IDE e Presets de Código
+    const codePresets = {
+      js: `// Exemplo JavaScript
+function calcularEficiencia(potenciaEntrada, potenciaSaida) {
+    let eficiencia = (potenciaSaida / potenciaEntrada) * 100;
+    console.log("Eficiência Calculada: " + eficiencia.toFixed(2) + "%");
+}
+
+calcularEficiencia(1500, 1280);`,
+      python: `# Exemplo Python (Simulado)
+def monitorar_voltagem(volts):
+    if volts < 210.0:
+        print("ALERTA: Tensão baixa detectada!")
+    else:
+        print("Tensão Normal: " + str(volts) + "V")
+
+monitorar_voltagem(205.5)`
+    };
+
+    function loadPresetCode() {
+      const lang = document.getElementById('code-lang').value;
+      document.getElementById('editor-input').value = codePresets[lang];
+    }
+
+    function executarCodigoSimulado() {
+      const code = document.getElementById('editor-input').value;
+      const consoleOut = document.getElementById('console-output');
+      consoleOut.innerText = "> Executando código...\n";
+
+      try {
+        // Redireciona console.log para a nossa caixa de texto
+        let logs = [];
+        const originalLog = console.log;
+        console.log = function(msg) {
+          logs.push(msg);
+          originalLog.apply(console, arguments);
+        };
+
+        // Executa via eval seguro
+        new Function(code)();
+
+        console.log = originalLog;
+        
+        if (logs.length > 0) {
+          consoleOut.innerText += logs.join("\n") + "\n\n> Executado com sucesso (0 erros).";
+        } else {
+          consoleOut.innerText += "> Código executado. (Nenhuma saída impressa pelo console.log).";
+        }
+      } catch (err) {
+        consoleOut.innerText += "\n[ERRO DE EXECUÇÃO]: " + err.message;
+      }
+    }
+
+    function limparTerminal() {
+      document.getElementById('console-output').innerText = "> Terminal limpo.";
+    }
+
+    // 4. Validador do Quiz
+    function verificarQuiz() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (!q1 || !q2 || !q3) {
+        alert("Por favor, responda a todas as 3 perguntas!");
+        return;
+      }
+
+      let score = 0;
+      if (q1.value === 'B') score++;
+      if (q2.value === 'C') score++;
+      if (q3.value === 'A') score++;
+
+      const scoreBox = document.getElementById('quiz-score');
+      const resultDiv = document.getElementById('quiz-result');
+
+      scoreBox.innerText = `Score: ${score} / 3`;
+      resultDiv.classList.remove('hidden');
+
+      if (score === 3) {
+        resultDiv.className = "p-4 rounded-xl text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800";
+        resultDiv.innerText = "Parabéns! Acertou todas as perguntas. Excelente domínio dos conceitos de programação.";
+      } else {
+        resultDiv.className = "p-4 rounded-xl text-xs font-semibold bg-amber-950 text-amber-300 border border-amber-800";
+        resultDiv.innerText = `Obteve ${score} de 3 acertos. Reveja os módulos teóricos para consolidar a matéria.`;
+      }
+    }
+
+    // Carregar código inicial ao abrir
+    window.onload = function() {
+      loadPresetCode();
+    };
+  </script>
+</body>
+</html>
