@@ -116,22 +116,24 @@
                     </a>
 
                     <div class="relative">
-                        <button type="button" id="practiceButton" aria-expanded="false" onclick="togglePracticeMenu()" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center gap-1.5">
+                        <button type="button" id="practiceButton" aria-expanded="false" onclick="togglePracticeMenu()" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                             <i data-lucide="wrench" class="w-4 h-4"></i>
                             <span>Praticar</span>
                             <i data-lucide="chevron-down" class="w-4 h-4"></i>
                         </button>
                         <div id="practiceMenu" class="practice-menu absolute left-0 top-full mt-2 w-52 rounded-xl border border-slate-700 bg-slate-800/95 p-2 shadow-2xl backdrop-blur-sm">
-                            <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricity</a>
-                            <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Breadboard</a>
-                            <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mechanics</a>
-                            <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Editor de Código</a>
+                            <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricidade</a>
+                            <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electrónica</a>
+                            <a href="#simulador" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mecânica</a>
+                            <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Programação</a>
                         </div>
                     </div>
 
-                    <a href="#simulador" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition inline-flex items-center gap-1.5">
+                    <a href="#simulador" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                         <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
+                        <a href="https://curvostudio.com/pt-br/simulator/motor-inducao-trifasico">
                         <span>Simulador / Testes</span>
+                        </a>
                     </a>
                     <a href="#criar" class="px-3 py-2 rounded-md hover:text-amber-400 hover:bg-slate-800 transition flex items-center space-x-1">
                         <i data-lucide="compass" class="w-4 h-4"></i>
@@ -147,7 +149,7 @@
                     </button>
 
                     <!-- Login Button -->
-                    <button type="button" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center gap-2">
+                    <button type="button" onclick="openLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm shadow transition flex items-center space-x-2">
                         <i data-lucide="log-in" class="w-4 h-4"></i>
                         <span class="hidden sm:inline">ENTRAR</span>
                     </button>
@@ -166,13 +168,13 @@
                         <span>Praticar</span>
                     </a>
                     <div class="pl-6 mt-1 space-y-1">
-                        <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricity</a>
-                        <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Breadboard</a>
-                        <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mechanics</a>
-                        <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Editor de Código</a>
+                        <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electricidade</a>
+                        <a href="https://dcaclab.com/pt/lab?breadboard=true" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Electrónica</a>
+                        <a href="#simulador" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Mecânica</a>
+                        <a href="https://mrdigitals.com/code-editor/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="block px-2 py-2 rounded-md text-sm text-slate-200 hover:text-amber-400 hover:bg-slate-700 transition">Programação</a>
                     </div>
                 </div>
-                <a href="#simulador" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-md hover:text-amber-400 hover:bg-slate-700 transition flex items-center gap-1.5 text-sm font-medium">
+                <a href="#simulador" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-md hover:text-amber-400 hover:bg-slate-700 transition flex items-center space-x-2 text-sm font-medium">
                     <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
                     <span>Simulador / Testes</span>
                 </a>
@@ -198,54 +200,417 @@
                     Plataforma inclusiva para crianças, jovens, adultos e empresas em Angola. Vídeos interativos com IA para aprendizagem infantil e simulações industriais reais para profissionais.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <a href="#aprender" class="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
-                        Explorar conteúdos
+                    <a href="#criar" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-center shadow-lg transition flex items-center justify-center space-x-2">
+                        <i data-lucide="box" class="w-5 h-5"></i>
+                        <span>Iniciar Calculadora de Projetos</span>
                     </a>
-                    <a href="#simulador" class="inline-flex items-center justify-center border border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition">
-                        Simulador
+                    <a href="#parcerias" class="border border-slate-600 hover:border-amber-400 bg-slate-800/60 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-xl text-center transition flex items-center justify-center space-x-2">
+                        <i data-lucide="handshake" class="w-5 h-5"></i>
+                        <span>Solicitar Parceria / Reunião</span>
                     </a>
                 </div>
             </div>
 
-            <div class="relative">
-                <div class="rounded-3xl border border-slate-700 bg-slate-900/50 p-6 shadow-2xl backdrop-blur-sm">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="rounded-2xl bg-slate-800/70 p-4 border border-slate-700">
-                            <div class="flex items-center gap-2 text-amber-400 mb-2">
-                                <i data-lucide="cpu" class="w-4 h-4"></i>
-                                <span class="text-sm font-semibold">Simulação</span>
-                            </div>
-                            <p class="text-slate-300 text-sm">Circuitos, motores e testes reais em ambiente digital.</p>
-                        </div>
-                        <div class="rounded-2xl bg-slate-800/70 p-4 border border-slate-700">
-                            <div class="flex items-center gap-2 text-cyan-400 mb-2">
-                                <i data-lucide="book-open" class="w-4 h-4"></i>
-                                <span class="text-sm font-semibold">Aprendizagem</span>
-                            </div>
-                            <p class="text-slate-300 text-sm">Conteúdos guiados para compreensão e prática contínua.</p>
-                        </div>
-                        <div class="rounded-2xl bg-slate-800/70 p-4 border border-slate-700">
-                            <div class="flex items-center gap-2 text-violet-400 mb-2">
-                                <i data-lucide="wrench" class="w-4 h-4"></i>
-                                <span class="text-sm font-semibold">Projetos</span>
-                            </div>
-                            <p class="text-slate-300 text-sm">Criação prática com foco em solução e inovação.</p>
-                        </div>
-                        <div class="rounded-2xl bg-slate-800/70 p-4 border border-slate-700">
-                            <div class="flex items-center gap-2 text-emerald-400 mb-2">
-                                <i data-lucide="users" class="w-4 h-4"></i>
-                                <span class="text-sm font-semibold">Comunidade</span>
-                            </div>
-                            <p class="text-slate-300 text-sm">Acesso livre para jovens, estudantes e profissionais.</p>
-                        </div>
+            <!-- CARD DESTAQUE DO AUTOR PRINCIPAL -->
+            <div class="bg-slate-800/90 border border-slate-700 p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-xs font-black uppercase px-4 py-1 rounded-bl-lg">
+                    Autor Principal
+                </div>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-16 h-16 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center font-black text-2xl border-2 border-white">
+                        AL
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Adilson Lourenço da Costa Santa-Rosa</h3>
+                        <p class="text-amber-400 text-sm font-medium">Engenharia Mecânica &amp; Inovação Tecnológica</p>
+                        <p class="text-slate-400 text-xs">Lobito, Benguela - Angola</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    "O EdTECH ANGOLA nasce da urgência de democratizar a ciência e a engenharia aplicada em Angola. Queremos garantir que qualquer criança ou profissional consiga projetar, calcular e testar ideias em condições reais sem depender de laboratórios caros ou de acesso limitado."
+                </p>
+                <div class="space-y-3 pt-4 border-t border-slate-700/80 text-sm">
+                    <div class="flex items-center space-x-3 text-slate-300">
+                        <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+                        <span class="font-mono text-xs sm:text-sm">alexcostasantarosa@gmail.com</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-300">
+                        <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
+                        <span>+244 926 267 207 / +244 955 765 673</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- RESUMO DO OBJETIVO E PROBLEMAS SOLUCIONADOS -->
+    <section class="py-16 px-4 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-3xl font-bold text-slate-900">Objetivo e Diagnóstico Social</h2>
+                <p class="text-slate-600 text-lg">
+                    Permitir a aquisição de conhecimentos técnicos e científicos de forma autónoma, inteligente e prática, sem burocracia, permitindo a especialização de crianças e adultos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Problemas Reais</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Dificuldade no acesso ao ensino prático e laboratórios.</li>
+                        <li>Encarecimento constante das propinas escolares.</li>
+                        <li>Escassez de material prático para conciliar com a teoria.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Ensino Gamificado &amp; Profissional</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Vídeos interativos com Inteligência Artificial para crianças.</li>
+                        <li>Ensino intensivo com simulações industriais para adultos.</li>
+                        <li>Ambiente prático de teste, simulação e desenvolvimento.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Cálculo Autônomo &amp; B2B</h3>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li>Cálculo de estruturas para qualquer projeto ou dimensão.</li>
+                        <li>Conexão direta com a base de dados de fornecedores.</li>
+                        <li>Geração automática de cotações unitárias e totais.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HUB DE FUNCIONALIDADES (APRENDER, PRATICAR, SIMULADOR) -->
+    <section id="aprender" class="py-16 px-4 bg-slate-100">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="border-b border-slate-300 pb-4 flex flex-col md:flex-row md:items-end justify-between">
+                <div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Hub Integrado</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Aprender, Praticar &amp; Testar</h2>
+                </div>
+                <p class="text-slate-600 text-sm mt-2 md:mt-0">Escolha uma área para iniciar os testes imediatamente.</p>
+            </div>
+
+            <!-- CARDS DAS 4 ÁREAS DE CONHECIMENTO -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Eletrônica -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Eletrônica</h3>
+                    <p class="text-slate-600 text-sm">Resistores, Capacitores, Transistores, Microcontroladores e Vídeos com IA.</p>
+                    <a href="electronics.html" target="_blank" rel="noopener noreferrer" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Começar a Aprender</span>
+                    </a>
+                </div>
+
+                <!-- Eletricidade -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="plug-zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Eletricidade</h3>
+                    <p class="text-slate-600 text-sm">Instalações residenciais, Comandos elétricos, Leis de Kirchhoff e Segurança.</p>
+                    <a href="#simulador" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Abrir Simulador</span>
+                    </a>
+                </div>
+
+                <!-- Mecânica -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-slate-200 text-slate-800 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="cog" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Mecânica</h3>
+                    <p class="text-slate-600 text-sm">Desenho técnico, Perfis metálicos, Dimensionamento de tubos e Soldagem.</p>
+                    <a href="#criar" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Criar Projetos</span>
+                    </a>
+                </div>
+
+                <!-- Programação -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 space-y-4">
+                    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center font-bold">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Programação</h3>
+                    <p class="text-slate-600 text-sm">Lógica de programação, C++ para Robótica, Python e Automação Industrial.</p>
+                    <a href="#simulador" class="text-amber-600 font-bold text-xs hover:underline flex items-center space-x-1">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        <span>Abrir Simulador</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO INTELIGENTE DE CRIAR PROJETOS (CADEIRA OU PROJETO LIVRE) -->
+    <section id="criar" class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Desenvolvimento Livre e Inteligente</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">Criar Projetos Mecânicos &amp; Cálculo de Materiais</h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Cálculo autónomo para a fabricação de cadeiras ou qualquer tipo de estrutura metálica personalizada.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 bg-slate-50 p-6 rounded-xl border border-slate-300 space-y-5 shadow-sm">
+                    <div>
+                        <label class="block font-bold text-slate-900 text-sm uppercase mb-2">Selecione o Tipo de Projeto:</label>
+                        <select id="projectSelect" onchange="toggleProjectMode()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none">
+                            <option value="chair">Fabricação de Cadeira Metálica (Predefinido)</option>
+                            <option value="free">Projeto Livre / Customizado (Qualquer Estrutura)</option>
+                        </select>
+                    </div>
+
+                    <hr class="border-slate-200">
+
+                    <div id="chairFields" class="space-y-3 text-sm">
+                        <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Parâmetros da Cadeira:</h4>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Altura das Pernas (cm):</label>
+                            <input type="number" id="legHeight" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Largura do Assento (cm):</label>
+                            <input type="number" id="seatWidth" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Profundidade do Assento (cm):</label>
+                            <input type="number" id="seatDepth" value="45" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700">Altura do Encosto (cm):</label>
+                            <input type="number" id="backHeight" value="50" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div id="freeFields" class="space-y-3 text-sm hidden">
+                        <h4 class="font-bold text-amber-600 text-xs uppercase tracking-wider">Dimensões da Estrutura Livre:</h4>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Altura (cm):</label>
+                                <input type="number" id="freeHeight" value="100" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Largura (cm):</label>
+                                <input type="number" id="freeWidth" value="100" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 text-xs">Comprimento (cm):</label>
+                                <input type="number" id="freeLength" value="200" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700">Comprimento Total Direto do Tubo (Opcional - em metros):</label>
+                            <input type="number" id="directTubeMeters" placeholder="Ex: 15 (deixe em branco para calcular pelas dimensões)" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700">Quantidade de Estruturas / Peças:</label>
+                            <input type="number" id="freeQty" value="1" min="1" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 text-sm">Perfil do Tubo Selecionado:</label>
+                        <select id="tubeType" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                            <option value="8500">Tubo Quadrado Aço Carbono 30x30mm (1.5mm)</option>
+                            <option value="10200">Tubo Quadrado Aço Carbono 40x40mm (2.0mm)</option>
+                            <option value="7800">Tubo Redondo 1 Polegada (1.5mm)</option>
+                            <option value="12500">Perfil Retangular 50x30mm (2.0mm)</option>
+                            <option value="8000">Cantoneira 25x25mm (2.0mm)</option>
+                            <option value="15000">Cantoneira 30x30mm (2.0mm)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="calculateProject()" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                        <span>Calcular Materiais &amp; Orçamento B2B</span>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-900 text-white p-6 rounded-xl space-y-6 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="font-bold text-amber-400 text-lg flex items-center space-x-2">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                            <span>Resultado do Algoritmo Inteligente</span>
+                        </h4>
+                        <span id="projTag" class="text-xs bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-full font-semibold">Cadeira Metálica</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <span class="text-slate-400 text-xs block">Comprimento Total de Tubo</span>
+                            <span id="resTotalMeters" class="text-2xl font-black text-amber-400">6,98 metros</span>
+                            <span class="text-xs text-slate-400 block mt-1">(Inclui 5% de margem de perda por corte)</span>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                            <span class="text-slate-400 text-xs block">Barras Comerciais (6 metros)</span>
+                            <span id="resBarsCount" class="text-2xl font-black text-amber-400">2 Barras</span>
+                            <span class="text-xs text-slate-400 block mt-1">Plano de corte otimizado</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 border-t border-slate-800 pt-4 text-sm">
+                        <h5 class="font-bold text-slate-200">Consumíveis &amp; Equipamentos Necessários:</h5>
+                        <ul class="text-slate-300 space-y-1.5 list-disc list-inside text-xs sm:text-sm">
+                            <li><strong class="text-white">Eletrodos de Solda (E6013):</strong> <span id="resElectrode">0,35 kg</span></li>
+                            <li><strong class="text-white">Discos de Corte (4.5 plg):</strong> <span id="resDiscs">2 Unidades</span></li>
+                            <li><strong class="text-white">Equipamentos Solicitados:</strong> Inversora de Solda, Rebarbadora Angular, Esquadro Magnético, EPIs de Segurança.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-800/80 p-4 rounded-lg border border-amber-500/30 space-y-3">
+                        <div class="flex justify-between items-center text-xs text-amber-400 font-bold uppercase tracking-wider">
+                            <span>Integração B2B (Fornecedores em Angola)</span>
+                            <span>AOA</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-300">Custo Total dos Materiais:</span>
+                            <span id="resTotalPrice" class="text-xl font-bold text-emerald-400">21.900 Kz</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Cotação calculada anexando preços unitários do catálogo de fornecedores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLICITAÇÃO DE PARCERIAS INSTITUCIONAIS & REUNIÕES -->
+    <section id="parcerias" class="py-16 px-4 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <div class="text-center space-y-3">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Cooperação &amp; Expansão</span>
+                <h2 class="text-3xl font-extrabold">Parcerias Institucionais e Investimentos</h2>
+                <p class="text-slate-300 text-sm sm:text-base">
+                    Escolas, empresas, colaboradores e investidores podem encaminhar solicitações diretamente para o Autor Principal.
+                </p>
+            </div>
+
+            <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Representante:</label>
+                        <input type="text" id="partnerName" required placeholder="Nome completo" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Instituição / Empresa:</label>
+                        <input type="text" id="partnerOrg" required placeholder="Nome da Escola ou Empresa" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">E-mail de Contacto:</label>
+                        <input type="email" id="partnerEmail" required placeholder="seuemail@dominio.com" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Telefone / WhatsApp:</label>
+                        <input type="tel" id="partnerPhone" required placeholder="9XX XXX XXX" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Tipo de Solicitação:</label>
+                    <select id="partnerType" class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none text-sm">
+                        <option>Parceria Escolar / Educacional</option>
+                        <option>Parceria Empresarial B2B / Fornecedor</option>
+                        <option>Investimento e Financiamento</option>
+                        <option>Solicitação de Reunião Direta</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Mensagem:</label>
+                    <textarea id="partnerMsg" rows="4" required placeholder="Descreva os detalhes da proposta..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span>Enviar Solicitação ao Autor Principal</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-8 px-4 border-t border-slate-800 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="font-bold text-white">EdTECH ANGOLA - Todos os direitos reservados.</p>
+                <p>Autor Principal: Adilson Lourenço da Costa Santa-Rosa</p>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 text-center sm:text-right">
+                <span>E-mail: alexcostasantarosa@gmail.com</span>
+                <span>Contactos: 926267207 / 955765673</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE LOGIN (COM VALIDAÇÃO DE QUALQUER DADO INSERIDO) -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-md w-full rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 bg-amber-500 text-slate-950 rounded-full flex items-center justify-center font-bold mx-auto">
+                    <i data-lucide="user-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">Acesso Demonstração</h3>
+                <p class="text-xs text-slate-500">
+                    Insira qualquer Usuário e Senha. Qualquer informação inserida será validada no sistema.
+                </p>
+            </div>
+
+            <form id="loginForm" onsubmit="handleDemoLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Usuário / E-mail:</label>
+                    <input type="text" id="demoUser" placeholder="Insira o seu usuário..." class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    <span id="userError" class="text-xs text-red-500 hidden mt-1">Por favor, introduza um usuário válido.</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Senha:</label>
+                    <input type="password" id="demoPass" placeholder="Insira a sua senha..." class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+                    <span id="passError" class="text-xs text-red-500 hidden mt-1">Por favor, introduza uma senha.</span>
+                </div>
+
+                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-lg shadow transition flex items-center justify-center space-x-2">
+                    <i data-lucide="log-in" class="w-5 h-5"></i>
+                    <span>ENTRAR NA PLATAFORMA</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE LÓGICA E INTERATIVIDADE -->
     <script>
         lucide.createIcons();
+
         function togglePracticeMenu() {
             const menu = document.getElementById('practiceMenu');
             const button = document.getElementById('practiceButton');
@@ -254,23 +619,135 @@
             button.setAttribute('aria-expanded', String(!isOpen));
         }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function openLoginModal() {
-            window.location.href = 'mailto:alexcostasantarosa@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20acesso%20-%20EdTECH%20ANGOLA';
-        }
-
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('practiceMenu');
-            const button = document.getElementById('practiceButton');
-            if (!button.contains(event.target) && !menu.contains(event.target)) {
-                menu.classList.remove('open');
-                button.setAttribute('aria-expanded', 'false');
+        document.addEventListener('click', function(event) {
+            const practiceMenu = document.getElementById('practiceMenu');
+            const practiceButton = document.getElementById('practiceButton');
+            if (practiceMenu && practiceButton && !practiceMenu.contains(event.target) && !practiceButton.contains(event.target)) {
+                practiceMenu.classList.remove('open');
+                practiceButton.setAttribute('aria-expanded', 'false');
             }
         });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            if (mobileMenu && mobileMenuToggle && !mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function handleDemoLogin(event) {
+            event.preventDefault();
+            const user = document.getElementById('demoUser').value.trim();
+            const pass = document.getElementById('demoPass').value.trim();
+            const userErr = document.getElementById('userError');
+            const passErr = document.getElementById('passError');
+
+            let isValid = true;
+
+            if (!user) {
+                userErr.classList.remove('hidden');
+                isValid = false;
+            } else {
+                userErr.classList.add('hidden');
+            }
+
+            if (!pass) {
+                passErr.classList.remove('hidden');
+                isValid = false;
+            } else {
+                passErr.classList.add('hidden');
+            }
+
+            if (isValid) {
+                alert(`Login efetuado com sucesso!\nSessão de demonstração validada para o usuário: "${user}".`);
+                closeLoginModal();
+            }
+        }
+
+        function toggleProjectMode() {
+            const mode = document.getElementById('projectSelect').value;
+            const chairFields = document.getElementById('chairFields');
+            const freeFields = document.getElementById('freeFields');
+            const projTag = document.getElementById('projTag');
+
+            if (mode === 'chair') {
+                chairFields.classList.remove('hidden');
+                freeFields.classList.add('hidden');
+                projTag.innerText = 'Cadeira Metálica';
+            } else {
+                chairFields.classList.add('hidden');
+                freeFields.classList.remove('hidden');
+                projTag.innerText = 'Projeto Livre / Customizado';
+            }
+            calculateProject();
+        }
+
+        function calculateProject() {
+            const mode = document.getElementById('projectSelect').value;
+            const tubePricePerBar = parseFloat(document.getElementById('tubeType').value) || 8500;
+            let totalCm = 0;
+
+            if (mode === 'chair') {
+                const legH = parseFloat(document.getElementById('legHeight').value) || 0;
+                const seatW = parseFloat(document.getElementById('seatWidth').value) || 0;
+                const seatD = parseFloat(document.getElementById('seatDepth').value) || 0;
+                const backH = parseFloat(document.getElementById('backHeight').value) || 0;
+
+                totalCm = (legH * 4) + (seatW * 2 + seatD * 2) + (backH * 2 + seatW) + (seatW * 2);
+            } else {
+                const directMeters = parseFloat(document.getElementById('directTubeMeters').value) || 0;
+
+                if (directMeters > 0) {
+                    totalCm = directMeters * 100;
+                } else {
+                    const freeH = parseFloat(document.getElementById('freeHeight').value) || 0;
+                    const freeW = parseFloat(document.getElementById('freeWidth').value) || 0;
+                    const freeL = parseFloat(document.getElementById('freeLength').value) || 0;
+                    const qty = parseFloat(document.getElementById('freeQty').value) || 1;
+
+                    totalCm = ((freeH * 4) + (freeW * 4) + (freeL * 4)) * qty;
+                }
+            }
+
+            const totalMeters = (totalCm / 100) * 1.05;
+            const barsNeeded = Math.max(1, Math.ceil(totalMeters / 6));
+
+            const electrodeKg = (totalMeters * 0.05).toFixed(2);
+            const discsCount = Math.max(2, Math.ceil(totalMeters / 3));
+
+            const totalTubeCost = barsNeeded * tubePricePerBar;
+            const totalConsumablesCost = (parseFloat(electrodeKg) * 2500) + (discsCount * 1200);
+            const grandTotal = totalTubeCost + totalConsumablesCost;
+
+            document.getElementById('resTotalMeters').innerText = `${totalMeters.toFixed(2).replace('.', ',')} metros`;
+            document.getElementById('resBarsCount').innerText = `${barsNeeded} Barra${barsNeeded > 1 ? 's' : ''}`;
+            document.getElementById('resElectrode').innerText = `${electrodeKg.replace('.', ',')} kg`;
+            document.getElementById('resDiscs').innerText = `${discsCount} Unidades`;
+            document.getElementById('resTotalPrice').innerText = `${grandTotal.toLocaleString('pt-AO')} Kz`;
+        }
+
+        function handlePartnerSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('partnerName').value;
+            const org = document.getElementById('partnerOrg').value;
+            const type = document.getElementById('partnerType').value;
+
+            alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${type}\n\nUma notificação direta foi enviada para o e-mail do Autor Principal (alexcostasantarosa@gmail.com).`);
+            document.getElementById('partnerForm').reset();
+        }
     </script>
 </body>
 </html>
