@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTECH ANGOLA - Eletricidade e Automação</title>
+    <link rel="icon" type="image/gif" href="logo.gif">
+    <style>
+        :root {
+            /* Paleta atualizada com vermelho como destaque */
+            --primary: #111827;     /* Fundo escuro elegante (Quase preto) */
+            --secondary: #dc2626;   /* Vermelho escuro/principal */
+            --accent: #ef4444;      /* Vermelho vivo para detalhes */
+            --bg-light: #f3f4f6;    /* Fundo geral claro */
+            --card-bg: #ffffff;     /* Fundo dos cartões */
+            --text-dark: #1f2937;   /* Texto principal escuro */
+            --text-muted: #6b7280;  /* Texto secundário */
+            --border: #e5e7eb;      /* Bordas suaves */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-weight: 900;
+        }
+        
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            background-color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            border-left: 4px solid var(--secondary);
+            padding-left: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-prot { background: #fee2e2; color: var(--secondary); }
+        .badge-cond { background: #f3f4f6; color: var(--text-dark); border: 1px solid var(--border); }
+        .badge-auto { background: #ffedd5; color: #ea580c; }
+
+        ul.list-tech {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        ul.list-tech li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        ul.list-tech li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #fef2f2; /* Fundo avermelhado muito claro no hover */
+        }
+
+        .diagram-box {
+            background: #1e1e1e;
+            color: #e5e5e5;
+            padding: 1.2rem;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        footer {
+            background: var(--primary);
+            color: #9ca3af;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--secondary);
+        }
+
+        footer span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; align-items: flex-start; }
+            nav ul { width: 100%; justify-content: flex-start; gap: 0.5rem; }
+            nav a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" class="w-full h-full">
+            <defs>
+              <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4F46E5" /><stop offset="100%" stop-color="#2563EB" />
+              </linearGradient>
+              <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06B6D4" /><stop offset="100%" stop-color="#3B82F6" />
+              </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="220" height="220" rx="52" fill="#FFFFFF"/>
+            <g>
+              <polygon points="120,38 168,58 120,78 72,58" fill="url(#primaryGrad)"/>
+              <path d="M 82 64 L 82 82 C 82 92, 99 98, 120 98 C 141 98, 158 92, 158 82 L 158 64" fill="none" stroke="url(#primaryGrad)" stroke-width="5" stroke-linecap="round"/>
+              <path d="M 82 108 L 148 108 L 135 118 L 82 118 Z" fill="url(#cyanGrad)"/>
+              <path d="M 82 108 L 82 146" stroke="url(#cyanGrad)" stroke-width="5.5" stroke-linecap="round"/>
+              <path d="M 82 127 L 132 127" stroke="url(#cyanGrad)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="132" cy="127" r="3.5" fill="#06B6D4"/>
+              <path d="M 82 136 L 154 136 L 139 146 L 82 146 Z" fill="url(#primaryGrad)"/>
+              <circle cx="120" cy="58" r="6" fill="#06B6D4"/>
+            </g>
+          </svg>
+                EdTECH<span>ANGOLA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#dispositivos">Dispositivos</a></li>
+                    <li><a href="#comparativo">Comparativo</a></li>
+                    <li><a href="#automacao">Automação</a></li>
+                    <li><a href="#esquemas">Esquemas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="dispositivos">
+            <h2 class="section-title">Dispositivos Elétricos Principais</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <span class="badge badge-prot">Proteção Residencial</span>
+                    <h3>Disjuntor Termomagnético (DTM)</h3>
+                    <p>Protege as canalizações contra sobrecargas e curtos-circuitos.</p>
+                    <ul class="list-tech">
+                        <li><strong>Curva B:</strong> Cargas resistivas (aquecedores, lâmpadas). Exposição 3-5x In.</li>
+                        <li><strong>Curva C:</strong> Cargas indutivas gerais (tomadas, motores pequenos). Exposição 5-10x In.</li>
+                        <li><strong>Curva D:</strong> Altas correntes de arranque (transformadores industriais). Exposição 10-20x In.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-prot">Segurança de Pessoas</span>
+                    <h3>Dispositivo Diferencial (DR / IDR)</h3>
+                    <p>Deteta fugas de corrente para a terra, prevenindo choques elétricos graves e incêndios.</p>
+                    <ul class="list-tech">
+                        <li><strong>30 mA (Alta Sensibilidade):</strong> Proteção humana direta em zonas húmidas.</li>
+                        <li><strong>300 mA:</strong> Proteção geral contra incêndios e uso industrial.</li>
+                        <li><strong>Tipos:</strong> AC (fugas AC), A (fugas AC e DC pulsante), B (universais).</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-prot">Proteção Surtos</span>
+                    <h3>Dispositivo contra Sobretensões (DPS)</h3>
+                    <p>Protege os equipamentos contra descargas atmosféricas e manobras na rede elétrica.</p>
+                    <ul class="list-tech">
+                        <li><strong>Classe I:</strong> Descargas diretas (painel principal/para-raios).</li>
+                        <li><strong>Classe II:</strong> Descargas indiretas (quadros de distribuição).</li>
+                        <li><strong>Classe III:</strong> Proteção fina junto aos equipamentos eletrónicos sensíveis.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-cond">Infraestrutura</span>
+                    <h3>Condutores Elétricos & Isolamento</h3>
+                    <p>Dimensionamento de secção nominal segundo a capacidade de condução de corrente (Iz).</p>
+                    <ul class="list-tech">
+                        <li><strong>Iluminação:</strong> Secção mínima de 1.5 mm².</li>
+                        <li><strong>Tomadas Gerais (TUG):</strong> Secção mínima de 2.5 mm².</li>
+                        <li><strong>Cargas Especiais (TUE):</strong> 4.0 mm², 6.0 mm² ou superior (AC, fornos).</li>
+                        <li><strong>Isolamentos:</strong> PVC (70°C residencial), XLPE / EPR (90°C industrial).</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-prot">Proteção Industrial</span>
+                    <h3>Relé Térmico e Fusíveis NH</h3>
+                    <p>Proteção dedicada a motores e circuitos de alta capacidade de curto-circuito em indústrias.</p>
+                    <ul class="list-tech">
+                        <li><strong>Relé Térmico:</strong> Proteção contra sobrecarga contínua em motores trifásicos.</li>
+                        <li><strong>Disjuntor-Motor:</strong> Proteção integrada (curto + sobrecarga) com rearme.</li>
+                        <li><strong>Fusíveis NH:</strong> Alta capacidade de rutura, classe gG (geral) e aM (motores).</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-cond">Manobra Industrial</span>
+                    <h3>Contactores & Relés Auxiliares</h3>
+                    <p>Dispositivos eletromecânicos para controlo de potências elevadas a partir de comandos de baixa potência.</p>
+                    <ul class="list-tech">
+                        <li><strong>Contactor AC-3:</strong> Manobra de motores trifásicos de gaiola de esquilo.</li>
+                        <li><strong>Contactor AC-1:</strong> Fornos elétricos e cargas resistivas puras.</li>
+                        <li><strong>Bobinas:</strong> Alimentação típica em 24VDC, 110VAC ou 230VAC.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="comparativo">
+            <h2 class="section-title">Residencial vs. Industrial</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parâmetro</th>
+                        <th>Eletricidade Residencial</th>
+                        <th>Eletricidade Industrial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tensão Típica</strong></td>
+                        <td>Monofásica / Bifásica (230V)</td>
+                        <td>Trifásica (400V / Média Tensão)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sistemas de Aterramento</strong></td>
+                        <td>TT, TN-S, TN-C-S</td>
+                        <td>TN-S, IT (indústrias com processo contínuo)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infraestrutura</strong></td>
+                        <td>Tubo PVC embebido em alvenaria</td>
+                        <td>Esteiras metálicas, calhas, tubos galvanizados</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Proteção Padrão</strong></td>
+                        <td>DTM + IDR + DPS Classe II</td>
+                        <td>Disjuntores Caixa Moldada, Fusíveis NH, Relés</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fator de Potência</strong></td>
+                        <td>Não afeta faturação do consumidor comum</td>
+                        <td>Correção obrigatória (Banco de Condensadores)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="automacao">
+            <h2 class="section-title">Automação</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <span class="badge badge-auto">Domótica</span>
+                    <h3>Residências Inteligentes</h3>
+                    <p>Tecnologias focadas em conforto, eficiência energética e segurança domiciliar.</p>
+                    <ul class="list-tech">
+                        <li><strong>Protocolos sem fios:</strong> Wi-Fi, Zigbee, Z-Wave, Bluetooth Mesh.</li>
+                        <li><strong>Dispositivos IoT:</strong> Relés inteligentes (Sonoff, Shelly), lâmpadas e tomadas Wi-Fi.</li>
+                        <li><strong>Integração:</strong> Assistentes de voz (Alexa, Google Home), automações baseadas em rotinas.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-auto">Industrial</span>
+                    <h3>Controlo de Processos e Máquinas</h3>
+                    <p>Tecnologia desenhada para ambientes severos, garantindo segurança e continuidade produtiva.</p>
+                    <ul class="list-tech">
+                        <li><strong>Controladores:</strong> PLC (Autómatos Programáveis) em linguagens Ladder ou SCL.</li>
+                        <li><strong>Acionamentos:</strong> Variadores de Frequência (VFD) e Soft-Starters.</li>
+                        <li><strong>Sensores HMI/SCADA:</strong> Interfaces Homem-Máquina e sistemas de supervisão fabril.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="esquemas">
+            <h2 class="section-title">Esquemas e Diagramas de Comando</h2>
+
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>1. Comutação de Escada (Three-Way)</h3>
+                    <p>Controlo de uma lâmpada por dois pontos distintos (ex: corredores, escadas).</p>
+                    <div class="diagram-box">
+Fase (L) ---> [L1 Interruptor 1] -- Shunt 1 --> [L1 Interruptor 2]
+               [L2 Interruptor 1] -- Shunt 2 --> [L2 Interruptor 2]
+                                                  [Comum Int 2] ---> (Lâmpada) ---> Neutro (N)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>2. Arranque Direto de Motor Trifásico</h3>
+                    <p>Comando industrial clássico com botoneiras e proteção por relé térmico.</p>
+                    <div class="diagram-box">
+Circuito de Potência (Trifásico):
+Rede (L1, L2, L3) ---> [Disjuntor] ---> [Contactor K1] ---> [Relé F1] ---> Motor
+
+Circuito de Comando (Ex: 230V):
+Fase ---> [NC F1 (95-96)] ---> [Botão OFF (NC)] ---> [Botão ON (NO)] ----+---> [Bobina K1] ---> Neutro
+                                                              |
+                                                    [Retenção K1 (13-14)]
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>3. Arranque Estrela-Triângulo (&Delta; - Y)</h3>
+                    <p>Arranque suave mecânico que reduz a corrente de partida em 1/3 da corrente nominal direta.</p>
+                    <div class="diagram-box">
+Sequência de Operação PLC / Temporizador:
+1. Ativa Contactor de Linha (K1) e Estrela (K3).
+2. Motor arranca em Y (Tensão de fase / &sqrt;3).
+3. Temporizador conta o tempo (ex: 5 segundos).
+4. Desliga K3, aguarda atraso de intertravamento (20 a 50ms).
+5. Ativa Contactor Triângulo (K2). Motor opera em tensão nominal.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>4. Ligação TN-S (Aterramento)</h3>
+                    <p>Separação rigorosa entre condutor Neutro (N) e condutor de Proteção (PE).</p>
+                    <div class="diagram-box">
+Painel de Entrada:
+Fase (L)  ----------> [ Disjuntor Principal ] -----------> [ Cargas ]
+Neutro (N) ---------> [ Barramento de Neutro (Azul) ] ---> [ Cargas ]
+Terra (PE) ---------> [ Barramento de Terra (Verde) ] ---> [ Massas Metálicas ]
+
+Atenção: O Neutro e Terra só estão interligados na origem do posto de transformação. Nunca no QED.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Desenvolvido por <span>EdTECH ANGOLA</span> | Inovação na Educação e Engenharia Técnica</p>
+        <p style="margin-top: 10px; font-size: 0.85rem; color: #6b7280;">© 2026 Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
