@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdTECH Angola | Plataforma de Ensino Técnico e Engenharia Mecânica</title>
+    <link rel="icon" type="image/gif" href="logo.gif">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-body: #f6f5f2;
+            --surface-card: #ffffff;
+            --dark-steel: #1a1e24;
+            --dark-surface: #222730;
+            --brown-primary: #8c5a3c;
+            --brown-hover: #75482d;
+            --brown-light: #f7f2ee;
+            --brown-border: #d9c4b5;
+            --grey-steel: #525d6d;
+            --grey-light: #e8eaed;
+            --grey-border: #d0d5dd;
+            --text-dark: #1b1f26;
+            --text-muted: #5e6775;
+            --accent-gold: #c68a4c;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* HEADER & LOGO */
+        .site-header {
+            background-color: var(--dark-steel);
+            border-bottom: 3px solid var(--brown-primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .logo-text-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .logo-text-title span {
+            color: #489bf7; /* Matching original logo cyan/blue accent for TECH */
+        }
+
+        .logo-text-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* NAVIGATION */
+        .nav-link {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff;
+            background-color: var(--brown-primary);
+        }
+
+        /* HERO SECTION */
+        .hero-banner {
+            background: linear-gradient(135deg, #12151a 0%, #222831 60%, #3a2e26 100%);
+            color: #ffffff;
+            border-bottom: 1px solid var(--grey-border);
+        }
+
+        .badge-brown {
+            background-color: rgba(140, 90, 60, 0.25);
+            color: #e5b899;
+            border: 1px solid rgba(140, 90, 60, 0.5);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        /* CARDS & CONTAINERS */
+        .card-custom {
+            background: var(--surface-card);
+            border: 1px solid var(--grey-border);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--brown-primary);
+        }
+
+        .section-header {
+            position: relative;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid var(--grey-border);
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background-color: var(--brown-primary);
+        }
+
+        /* INTERACTIVE VIEWER */
+        .viewer-container {
+            background-color: var(--dark-steel);
+            border: 1px solid #2d3440;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .tab-button {
+            background-color: #272d37;
+            color: #a0aec0;
+            border: 1px solid #363e4d;
+            padding: 0.6rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-button:hover, .tab-button.active {
+            background-color: var(--brown-primary);
+            color: #ffffff;
+            border-color: var(--brown-hover);
+            box-shadow: 0 4px 12px rgba(140, 90, 60, 0.3);
+        }
+
+        /* TABLES */
+        .table-custom th {
+            background-color: var(--dark-steel);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-bottom: 2px solid var(--brown-primary);
+        }
+
+        .table-custom td {
+            border-bottom: 1px solid var(--grey-border);
+            font-size: 0.92rem;
+        }
+
+        /* CALCULATOR WIDGET */
+        .calc-box {
+            background: #ffffff;
+            border: 1px solid var(--brown-border);
+            border-radius: 10px;
+            border-top: 4px solid var(--brown-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER NAVBAR -->
+    <header class="site-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+            
+            <!-- LOGO INTEGRATION BASED ON BRAND IMAGE -->
+            <div class="logo-container">
+                <!-- SVG Reproduction of the Graduation Cap & Stacked Book Logo -->
+                <svg width="46" height="46" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="rounded-lg bg-white p-1 shadow-sm">
+                    <!-- Background rounded square -->
+                    <rect width="200" height="200" rx="40" fill="#F8FAFC"/>
+                    
+                    <!-- Graduation Cap Top -->
+                    <path d="M100 35 L170 65 L100 95 L30 65 Z" fill="#6366F1" stroke="#4338CA" stroke-width="4"/>
+                    <!-- Cap Inner Light Accent -->
+                    <circle cx="100" cy="65" r="10" fill="#06B6D4"/>
+                    <!-- Cap Lower Rim -->
+                    <path d="M50 75 V105 C50 120 150 120 150 105 V75" fill="none" stroke="#4338CA" stroke-width="10" stroke-linecap="round"/>
+                    
+                    <!-- Tassel -->
+                    <path d="M170 65 L180 90 V120" fill="none" stroke="#EF4444" stroke-width="6" stroke-dasharray="4 4"/>
+                    <circle cx="180" cy="125" r="6" fill="#F59E0B"/>
+                    
+                    <!-- Stacked Books / Tech Layers -->
+                    <path d="M50 135 H150" stroke="#0ea5e9" stroke-width="12" stroke-linecap="round"/>
+                    <circle cx="140" cy="135" r="4" fill="#ffffff"/>
+                    <path d="M50 160 H150" stroke="#8b5cf6" stroke-width="12" stroke-linecap="round"/>
+                </svg>
+
+                <div>
+                    <div class="logo-text-title">Ed<span class="text-sky-500">TECH</span> <span class="text-amber-600 font-normal text-xs px-2 py-0.5 rounded bg-amber-950/40 border border-amber-800/50">ANGOLA</span></div>
+                    <div class="logo-text-sub">Education & Science</div>
+                </div>
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="flex flex-wrap gap-1 sm:gap-2">
+                <a href="#interativo" class="nav-link active">Explorador 3D</a>
+                <a href="#automotiva" class="nav-link">Mecânica Automotiva</a>
+                <a href="#usinagem" class="nav-link">Usinagem & Torneamento</a>
+                <a href="#soldadura" class="nav-link">Soldadura Profissional</a>
+                <a href="#calculadora" class="nav-link">Ferramentas de Cálculo</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-banner py-12 md:py-16 px-4">
+        <div class="max-w-7xl mx-auto text-center md:text-left grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7 space-y-4">
+                <span class="badge-brown">Plataforma Técnica Profissional</span>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    Ensino Superior Técnico de <span class="text-amber-600">Engenharia Mecânica</span> e Metalomecânica
+                </h1>
+                <p class="text-slate-300 text-base md:text-lg max-w-2xl font-normal">
+                    Formação especializada sobre motores de veículos ligeiros e pesados, motociclos, usinagem em torno mecânico, serralharia de precisão e processos industriais de soldadura.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#interativo" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white font-semibold rounded-lg shadow-md transition-all flex items-center gap-2">
+                        Explorar Componentes Técnicos
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <a href="#calculadora" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg border border-slate-500 transition-all">
+                        Calculadoras de Engenharia
+                    </a>
+                </div>
+            </div>
+
+            <!-- STATS / HIGHLIGHT BOX -->
+            <div class="md:col-span-5 grid grid-cols-2 gap-4">
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 text-center">
+                    <div class="text-3xl font-extrabold text-amber-500">4 Módulos</div>
+                    <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Disciplinas Essenciais</div>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 text-center">
+                    <div class="text-3xl font-extrabold text-slate-200">Interactive</div>
+                    <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Vetores & Diagramas</div>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 text-center">
+                    <div class="text-3xl font-extrabold text-slate-200">Normas ISO</div>
+                    <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Padrão Industrial</div>
+                </div>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 text-center">
+                    <div class="text-3xl font-extrabold text-amber-500">Metrologia</div>
+                    <div class="text-xs uppercase tracking-wider text-slate-400 mt-1">Precisão Micrométrica</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- SECTION 1: INTERACTIVE COMPONENT INSPECTOR -->
+        <section id="interativo" class="scroll-mt-20">
+            <div class="section-header">
+                <h2 class="text-2xl font-bold text-slate-900">Inspecção Técnica de Componentes Industriais</h2>
+                <p class="text-slate-600 text-sm">Selecione o elemento para visualizar a estrutura vetorial, especificações de material e tolerâncias operacionais.</p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-6 space-y-6">
+                <!-- TABS -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="tab-button active" onclick="switchViewer('piston', this)">1. Êmbolo e Biela (Motor)</button>
+                    <button class="tab-button" onclick="switchViewer('turbo', this)">2. Turbocompressor VGT (Pesados)</button>
+                    <button class="tab-button" onclick="switchViewer('lathe', this)">3. Placa de Torno (Usinagem)</button>
+                    <button class="tab-button" onclick="switchViewer('welding', this)">4. Junta de Solda Biselada (TIG)</button>
+                    <button class="tab-button" onclick="switchViewer('clutch', this)">5. Embraiagem Multidisco (Motociclos)</button>
+                </div>
+
+                <!-- VIEWER DISPLAY GRID -->
+                <div class="viewer-container p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- SVG GRAPHIC CONTAINER -->
+                    <div class="lg:col-span-5 flex justify-center items-center bg-slate-900/90 rounded-lg p-6 border border-slate-800 min-h-[300px]" id="svg-display">
+                        <!-- SVG dynamically rendered -->
+                    </div>
+
+                    <!-- DATA SHEET -->
+                    <div class="lg:col-span-7 space-y-4 text-slate-200">
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+                            <h3 class="text-xl font-bold text-amber-500" id="comp-title">Pistão e Biela de Motor</h3>
+                            <span class="text-xs px-2.5 py-1 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono" id="comp-category">Automotiva</span>
+                        </div>
+
+                        <div class="bg-slate-800/80 p-3.5 rounded-md text-xs font-mono text-slate-300 space-y-1 border-l-4 border-amber-600" id="comp-specs">
+                            <!-- Dynamic technical specs -->
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed" id="comp-description">
+                            Componente central de conversão mecânica responsável por receber a pressão da combustão e transmiti-la para a árvore de manivelas (virabrequim).
+                        </p>
+
+                        <div>
+                            <h4 class="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2">Características Principais:</h4>
+                            <ul class="space-y-1.5 text-sm text-slate-300" id="comp-bullets">
+                                <!-- Dynamic bullet points -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MECÂNICA AUTOMOTIVA -->
+        <section id="automotiva" class="scroll-mt-20">
+            <div class="section-header">
+                <h2 class="text-2xl font-bold text-slate-900">Mecânica Automotiva Geral e Especializada</h2>
+                <p class="text-slate-600 text-sm">Sistemas de propulsão, transmissão e auxílio diagnóstico para ligeiros, pesados e duas rodas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card Ligeiros -->
+                <div class="card-custom p-6 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-lg">01</div>
+                    <h3 class="text-lg font-bold text-slate-900">Veículos Ligeiros</h3>
+                    <p class="text-sm text-slate-600">Sistemas de ignição, injeção eletrónica direta e gestão térmica em motores Ciclo Otto.</p>
+                    <ul class="space-y-2 text-sm text-slate-700 pt-2 border-t border-slate-100">
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Leitura de oscilograma de sensores MAP/MAF e Sonda Lambda.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Sincronismo de correia dentada e variador de fase VVT.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Diagnóstico OBD-II e análise de parâmetros em tempo real.</li>
+                    </ul>
+                </div>
+
+                <!-- Card Pesados -->
+                <div class="card-custom p-6 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 text-slate-800 flex items-center justify-center font-bold text-lg">02</div>
+                    <h3 class="text-lg font-bold text-slate-900">Caminhões e Pesados</h3>
+                    <p class="text-sm text-slate-600">Motores Diesel de elevada cilindrada, travagem pneumática e gestão de emissões.</p>
+                    <ul class="space-y-2 text-sm text-slate-700 pt-2 border-t border-slate-100">
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Sistemas Common Rail de alta pressão e unidades Injetor-Bomba.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Circuitos pneumáticos de travagem com secador APU e Válvulas Relay.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Transmissões pesadas com divisor de marchas (Splitter/Range).</li>
+                    </ul>
+                </div>
+
+                <!-- Card Motociclos -->
+                <div class="card-custom p-6 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-lg">03</div>
+                    <h3 class="text-lg font-bold text-slate-900">Motociclos</h3>
+                    <p class="text-sm text-slate-600">Engenharia de motores monocilíndricos e multicilindricos de alta rotação.</p>
+                    <ul class="space-y-2 text-sm text-slate-700 pt-2 border-t border-slate-100">
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Afinação de carburadores vácuo e injeção eletrónica de moto.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Embraiagem multidisco banhada em óleo e seletores por tambor.</li>
+                        <li class="flex items-start gap-2"><span class="text-amber-700 font-bold">•</span> Transmissão final por corrente, afinação de folga e alinhamento.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: USINAGEM E TORNEAMENTO -->
+        <section id="usinagem" class="scroll-mt-20">
+            <div class="section-header">
+                <h2 class="text-2xl font-bold text-slate-900">Usinagem, Torneamento e Metrologia</h2>
+                <p class="text-slate-600 text-sm">Operações de fabrico por arranque de apara, ferramentas de corte e ajuste dimensional.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Conteúdo Teórico -->
+                <div class="space-y-6">
+                    <div class="card-custom p-6">
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Torno Mecânico Convencional e CNC</h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            O torneamento é o processo mecânico onde a peça gira em torno do seu próprio eixo enquanto a ferramenta de corte de ponta única realiza o avanço linear.
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-100 p-3 rounded-md border border-slate-200">
+                                <span class="font-bold text-slate-800 block">Faceamento:</span>
+                                Produção de uma superfície plana perpendicular ao eixo de rotação.
+                            </div>
+                            <div class="bg-slate-100 p-3 rounded-md border border-slate-200">
+                                <span class="font-bold text-slate-800 block">Cilindragem:</span>
+                                Redução uniforme do diâmetro externo da peça.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-custom p-6">
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Metrologia Dimensional de Precisão</h3>
+                        <p class="text-sm text-slate-600 mb-3">
+                            Controlo de qualidade obrigatório para garantir o acoplamento e tolerâncias exigidas no desenho técnico.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-700">
+                            <li><strong class="text-slate-900">Paquímetro (0.02 mm):</strong> Medição rápida de diâmetros internos, externos e profundidade.</li>
+                            <li><strong class="text-slate-900">Micrómetro (0.001 mm):</strong> Medição de alta precisão com fuso micrométrico e catraca.</li>
+                            <li><strong class="text-slate-900">Relógio Comparador:</strong> Verificação de excentricidade, empeno e alinhamento na placa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tabela de Ferramentas de Corte -->
+                <div class="card-custom p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900">Classificação das Ferramentas de Corte (ISO)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse table-custom">
+                            <thead>
+                                <tr>
+                                    <th class="p-3">Código ISO</th>
+                                    <th class="p-3">Material Indicado</th>
+                                    <th class="p-3">Característica</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-amber-800">P (Azul)</td>
+                                    <td class="p-3">Aço ao Carbono / Liga</td>
+                                    <td class="p-3 text-xs text-slate-600">Aparas longas, exige quebra-aparas eficiente.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-slate-700">M (Amarelo)</td>
+                                    <td class="p-3">Aço Inoxidável</td>
+                                    <td class="p-3 text-xs text-slate-600">Tendência ao encruamento, requer aresta afiada.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-amber-700">K (Vermelho)</td>
+                                    <td class="p-3">Ferro Fundido</td>
+                                    <td class="p-3 text-xs text-slate-600">Aparas curtas e abrasivas, alta dureza.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-bold text-emerald-700">N (Verde)</td>
+                                    <td class="p-3">Alumínio e Metais Não-Ferrosos</td>
+                                    <td class="p-3 text-xs text-slate-600">Altas velocidades de corte sem aderência.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SOLDADURA PROFISSIONAL E SERRALHARIA -->
+        <section id="soldadura" class="scroll-mt-20">
+            <div class="section-header">
+                <h2 class="text-2xl font-bold text-slate-900">Soldadura Profissional e Serralharia Estrutural</h2>
+                <p class="text-slate-600 text-sm">Processos de união permanente de metaise preparação de chanfros industriais.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Eletrodo Revestido -->
+                <div class="card-custom p-6 space-y-3">
+                    <span class="text-xs font-bold font-mono px-2.5 py-1 bg-amber-100 text-amber-900 rounded">PROCESSO 111 / SMAW</span>
+                    <h3 class="text-lg font-bold text-slate-900">Eletrodo Revestido</h3>
+                    <p class="text-sm text-slate-600">Processo manual com arco elétrico entre o eletrodo consumível e a peça de trabalho.</p>
+                    <div class="pt-2 text-xs space-y-1 text-slate-700 border-t border-slate-100">
+                        <div><strong>E6013:</strong> Revestimento rutílico, arco estável para serralharia geral.</div>
+                        <div><strong>E7018:</strong> Revestimento básico de baixo hidrogénio para estruturas de alta responsabilidade.</div>
+                    </div>
+                </div>
+
+                <!-- MIG / MAG -->
+                <div class="card-custom p-6 space-y-3">
+                    <span class="text-xs font-bold font-mono px-2.5 py-1 bg-slate-200 text-slate-900 rounded">PROCESSO 131/135 / GMAW</span>
+                    <h3 class="text-lg font-bold text-slate-900">Soldadura MIG/MAG</h3>
+                    <p class="text-sm text-slate-600">Alimentação contínua de arame maciço sob proteção gasosa inerte ou ativa.</p>
+                    <div class="pt-2 text-xs space-y-1 text-slate-700 border-t border-slate-100">
+                        <div><strong>MIG (Argón):</strong> Ideal para alumínio, cobre e ligas inoxidáveis.</div>
+                        <div><strong>MAG (CO2 / Mistura):</strong> Indicado para aços estruturais ao carbono com alta taxa de deposição.</div>
+                    </div>
+                </div>
+
+                <!-- TIG -->
+                <div class="card-custom p-6 space-y-3">
+                    <span class="text-xs font-bold font-mono px-2.5 py-1 bg-amber-100 text-amber-900 rounded">PROCESSO 141 / GTAW</span>
+                    <h3 class="text-lg font-bold text-slate-900">Soldadura TIG</h3>
+                    <p class="text-sm text-slate-600">Arco elétrico estabelecido com eletrodo não-consumível de Tungsténio sob atmosfera inerte.</p>
+                    <div class="pt-2 text-xs space-y-1 text-slate-700 border-t border-slate-100">
+                        <div><strong>Aplicações:</strong> Tubagens de alta pressão, permutadores de calor e acabamentos cirúrgicos.</div>
+                        <div><strong>Proteção:</strong> Purga interna com Argón em tubos para evitar oxidação da raiz.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: FERRAMENTAS DE CÁLCULO DE ENGENHARIA -->
+        <section id="calculadora" class="scroll-mt-20">
+            <div class="section-header">
+                <h2 class="text-2xl font-bold text-slate-900">Ferramentas Práticas e Cálculos de Engenharia</h2>
+                <p class="text-slate-600 text-sm">Utilize os simuladores abaixo para parâmetros operacionais de oficina.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- CALCULADORA DE ROTAÇÃO DE TORNO -->
+                <div class="calc-box p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h3 class="font-bold text-slate-900">Cálculo de Rotação do Torno (RPM)</h3>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded font-mono">N = (Vc * 1000) / (π * D)</span>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Velocidade de Corte - Vc (m/min):</label>
+                            <input type="number" id="input-vc" value="30" class="w-full p-2.5 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                            <span class="text-xs text-slate-500">Ex: Aço 1045 com HSS ≈ 30 m/min | Metal Duro ≈ 120 m/min</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Diâmetro da Peça - D (mm):</label>
+                            <input type="number" id="input-diam" value="50" class="w-full p-2.5 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                        </div>
+
+                        <button onclick="calculateRPM()" class="w-full py-2.5 bg-amber-800 hover:bg-amber-900 text-white font-semibold rounded-md transition-all">
+                            Calcular Rotação
+                        </button>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-md text-center mt-3">
+                            <span class="text-xs text-slate-400 block uppercase tracking-wider">Rotação Recomendada</span>
+                            <span class="text-2xl font-extrabold text-amber-500" id="result-rpm">191 RPM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALCULADORA DE CILINDRADA DO MOTOR -->
+                <div class="calc-box p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h3 class="font-bold text-slate-900">Cálculo de Cilindrada do Motor</h3>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded font-mono">V = π/4 * D² * S * N</span>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Diâmetro Cilindro (mm):</label>
+                                <input type="number" id="input-bore" value="82.5" class="w-full p-2.5 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Curso do Pistão (mm):</label>
+                                <input type="number" id="input-stroke" value="92.8" class="w-full p-2.5 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Número de Cilindros:</label>
+                            <input type="number" id="input-cylinders" value="4" class="w-full p-2.5 border border-slate-300 rounded-md focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                        </div>
+
+                        <button onclick="calculateDisplacement()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-md transition-all">
+                            Calcular Cilindrada Total
+                        </button>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-md text-center mt-3">
+                            <span class="text-xs text-slate-400 block uppercase tracking-wider">Cilindrada Total</span>
+                            <span class="text-2xl font-extrabold text-amber-500" id="result-cc">1984 cm³ (2.0L)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t-4 border-amber-700 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-3">
+                <div class="text-white font-extrabold text-lg flex items-center gap-2">
+                    Ed<span class="text-sky-400">TECH</span> ANGOLA
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Plataforma técnica dedicada ao desenvolvimento e qualificação profissional em Engenharia Mecânica, Manutenção Automotiva, Usinagem e Soldadura em Angola.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Módulos de Estudo</h4>
+                <ul class="text-xs space-y-2">
+                    <li><a href="#automotiva" class="hover:text-amber-500 transition-colors">Sistemas de Injeção & Motores Diesel</a></li>
+                    <li><a href="#usinagem" class="hover:text-amber-500 transition-colors">Torno Mecânico & Fresadora Universal</a></li>
+                    <li><a href="#soldadura" class="hover:text-amber-500 transition-colors">Processos TIG / MIG / MAG & SMAW</a></li>
+                    <li><a href="#interativo" class="hover:text-amber-500 transition-colors">Explorador Vetorial de Componentes</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Normas e Padrões</h4>
+                <p class="text-xs text-slate-400">
+                    Conteúdos em conformidade com as diretrizes ISO, DIN e regulamentos técnicos de segurança industrial.
+                </p>
+                <div class="mt-4 text-xs font-mono text-slate-500">
+                    EdTECH Angola © 2026. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DATA BASE FOR COMPONENT VIEWER
+        const components = {
+            piston: {
+                title: "Êmbolo e Biela do Motor",
+                category: "Mecânica Automotiva",
+                specs: "MATERIAL: Liga de Alumínio Silício / Aço Forjado 4340\nTOLERÂNCIA DIMENSIONAL: ± 0.008 mm\nPARES DE FRICÇÃO: Bronzinas Tri-Metálicas",
+                desc: "Elemento móvel que veda a câmara de combustão e converte a energia térmica da expansão dos gases em trabalho mecânico linear, transmitido através do pino do pistão para a biela.",
+                bullets: [
+                    "<strong>Anéis de Compressão e Óleo:</strong> Garantem a vedação de gases e a raspagem do filme de óleo nas paredes do cilindro.",
+                    "<strong>Pino Flutuante:</strong> Articulação com tratamento térmico de cementação.",
+                    "<strong>Capa da Biela:</strong> Fraturada por fuso para alinhamento micrométrico perfeito."
+                ],
+                svg: `<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="20" width="100" height="60" rx="6" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="45" y1="35" x2="155" y2="35" stroke="#b45309" stroke-width="2"/>
+                    <line x1="45" y1="45" x2="155" y2="45" stroke="#b45309" stroke-width="2"/>
+                    <line x1="45" y1="55" x2="155" y2="55" stroke="#b45309" stroke-width="2"/>
+                    <circle cx="100" cy="60" r="14" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+                    <path d="M 92 72 L 88 160 L 112 160 L 108 72 Z" fill="#334155" stroke="#8c5a3c" stroke-width="2"/>
+                    <circle cx="100" cy="180" r="26" fill="none" stroke="#8c5a3c" stroke-width="6"/>
+                    <circle cx="100" cy="180" r="18" fill="#0f172a"/>
+                    <circle cx="72" cy="180" r="3" fill="#fbbf24"/>
+                    <circle cx="128" cy="180" r="3" fill="#fbbf24"/>
+                </svg>`
+            },
+            turbo: {
+                title: "Turbocompressor VGT",
+                category: "Veículos Pesados / Diesel",
+                specs: "ROTAÇÃO OPERACIONAL: Até 180.000 RPM\nPRESSÃO DE SOBREALIMENTAÇÃO: 1.5 a 2.8 bar\nTEMPERATURA DOS GASES: Até 850°C",
+                desc: "Aproveita a energia residual da exaustão para movimentar a roda da turbina que, através de um eixo rígido, aciona o compressor para admitir maior massa de ar nos cilindros.",
+                bullets: [
+                    "<strong>Geometria Variável (VGT):</strong> Aletas móveis na carcaça quente que ajustam a velocidade dos gases de escape.",
+                    "<strong>Mancal Flutuante Hydro-Dynamic:</strong> Lubrificado continuamente sob pressão de óleo do motor.",
+                    "<strong>Rotor do Compressor:</strong> Alumínio usinado de alta liga com balanceamento dinâmico."
+                ],
+                svg: `<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 40 100 C 40 40, 120 40, 130 90 C 140 140, 70 160, 40 100 Z" fill="#334155" stroke="#8c5a3c" stroke-width="2"/>
+                    <circle cx="85" cy="95" r="32" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
+                    <path d="M 85 68 L 85 122 M 58 95 L 112 95 M 66 76 L 104 114 M 104 76 L 66 114" stroke="#d97706" stroke-width="2"/>
+                    <rect x="115" y="85" width="40" height="20" fill="#64748b"/>
+                    <path d="M 155 70 L 185 50 L 185 140 L 155 120 Z" fill="#7f1d1d" stroke="#b45309" stroke-width="2"/>
+                </svg>`
+            },
+            lathe: {
+                title: "Placa Universal do Torno (3 Castanhas)",
+                category: "Usinagem & Torneamento",
+                specs: "SISTEMA DE FIXAÇÃO: Autocentrante Simultâneo\nRIGIDEZ MECÂNICA: Alta capacidade de aperto radial\nMATERIAL: Ferro Fundido Nodular / Castanhas Temperadas",
+                desc: "Dispositivo essencial para fixar e centrar com precisão peças cilíndricas ou hexagonais durante as operações de desbaste e acabamento no torno mecânico.",
+                bullets: [
+                    "<strong>Rosca Espiral Interna:</strong> Transmite o movimento simultâneo de fecho às três castanhas.",
+                    "<strong>Castanhas Reversíveis:</strong> Permite fixação externa ou interna de buchas e tubos.",
+                    "<strong>Corpo Balanceado:</strong> Minimiza vibrações em rotações elevadas."
+                ],
+                svg: `<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="120" r="78" fill="#334155" stroke="#8c5a3c" stroke-width="3"/>
+                    <circle cx="100" cy="120" r="28" fill="#0f172a" stroke="#ffffff" stroke-width="2"/>
+                    <rect x="90" y="52" width="20" height="36" fill="#94a3b8" stroke="#8c5a3c" stroke-width="2"/>
+                    <rect x="55" y="130" width="20" height="36" fill="#94a3b8" stroke="#8c5a3c" stroke-width="2" transform="rotate(120 65 148)"/>
+                    <rect x="125" y="130" width="20" height="36" fill="#94a3b8" stroke="#8c5a3c" stroke-width="2" transform="rotate(-120 135 148)"/>
+                </svg>`
+            },
+            welding: {
+                title: "Junta de Topo em V (Solda TIG/MIG)",
+                category: "Soldadura Profissional",
+                specs: "ÂNGULO DO CHANFRO: 60° (30° cada bisel)\nABERTURA DA RAIZ: 2.0 a 3.0 mm\nNORMA APLICÁVEL: AWS D1.1 / ISO 5817",
+                desc: "Preparação de bordos para garantir a fusão completa das margens em chapas e tubagens de espessura superior a 4 mm.",
+                bullets: [
+                    "<strong>Zona de Fusão (ZF):</strong> Mistura homogénea do metal base com o metal de adição.",
+                    "<strong>Zona Afetada pelo Calor (ZAC):</strong> Região adjacente submetida a ciclo térmico sem fusão.",
+                    "<strong>Passe de Raiz:</strong> Primeira camada determinante para a integridade do cordão."
+                ],
+                svg: `<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="20,100 80,100 90,140 20,140" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+                    <polygon points="180,100 120,100 110,140 180,140" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+                    <polygon points="80,100 120,100 110,140 90,140" fill="#8c5a3c"/>
+                    <ellipse cx="100" cy="98" rx="22" ry="6" fill="#b45309" stroke="#ffffff" stroke-width="1"/>
+                    <ellipse cx="100" cy="142" rx="12" ry="4" fill="#78350f"/>
+                </svg>`
+            },
+            clutch: {
+                title: "Embraiagem Multidisco em Banho de Óleo",
+                category: "Motociclos",
+                specs: "DISCOS: Fricção (Celulose/Fibra) + Discos de Aço\nMEIO LUBRIFICANTE: Óleo do Motor (JASO MA2)\nPRESSÃO DE CARGA: Molas Helicoidais Axiais",
+                desc: "Conjunto compacto de discos intercalados responsável por acoplar e desacoplar progressivamente o binário da motorização para a caixa de velocidades.",
+                bullets: [
+                    "<strong>Discos de Fricção:</strong> Revestimento de elevado coeficiente de atrito sem degradação no óleo.",
+                    "<strong>Cepo e Tambor:</strong> Guias ranhuradas de transmissão de binário.",
+                    "<strong>Haste de Empurrar:</strong> Liberada pelo acionamento da manete do condutor."
+                ],
+                svg: `<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="50" width="120" height="140" rx="6" fill="#1e293b" stroke="#8c5a3c" stroke-width="2"/>
+                    <line x1="50" y1="70" x2="150" y2="70" stroke="#b45309" stroke-width="5"/>
+                    <line x1="50" y1="85" x2="150" y2="85" stroke="#94a3b8" stroke-width="4"/>
+                    <line x1="50" y1="100" x2="150" y2="100" stroke="#b45309" stroke-width="5"/>
+                    <line x1="50" y1="115" x2="150" y2="115" stroke="#94a3b8" stroke-width="4"/>
+                    <line x1="50" y1="130" x2="150" y2="130" stroke="#b45309" stroke-width="5"/>
+                    <circle cx="100" cy="168" r="12" fill="#d97706"/>
+                </svg>`
+            }
+        };
+
+        function switchViewer(key, btnEl) {
+            const data = components[key];
+            if (!data) return;
+
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            if(btnEl) btnEl.classList.add('active');
+
+            document.getElementById('svg-display').innerHTML = data.svg;
+            document.getElementById('comp-title').innerText = data.title;
+            document.getElementById('comp-category').innerText = data.category;
+            document.getElementById('comp-specs').innerText = data.specs;
+            document.getElementById('comp-description').innerText = data.desc;
+
+            const bulletsList = document.getElementById('comp-bullets');
+            bulletsList.innerHTML = '';
+            data.bullets.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2';
+                li.innerHTML = `<span class="text-amber-500 font-bold">•</span> <div>${item}</div>`;
+                bulletsList.appendChild(li);
+            });
+        }
+
+        // CALCULATOR 1: LATHE RPM
+        function calculateRPM() {
+            const vc = parseFloat(document.getElementById('input-vc').value) || 0;
+            const d = parseFloat(document.getElementById('input-diam').value) || 0;
+
+            if (d <= 0) {
+                document.getElementById('result-rpm').innerText = "Diâmetro Inválido";
+                return;
+            }
+
+            const rpm = Math.round((vc * 1000) / (Math.PI * d));
+            document.getElementById('result-rpm').innerText = `${rpm} RPM`;
+        }
+
+        // CALCULATOR 2: ENGINE DISPLACEMENT
+        function calculateDisplacement() {
+            const bore = parseFloat(document.getElementById('input-bore').value) || 0;
+            const stroke = parseFloat(document.getElementById('input-stroke').value) || 0;
+            const cyl = parseInt(document.getElementById('input-cylinders').value) || 0;
+
+            if (bore <= 0 || stroke <= 0 || cyl <= 0) {
+                document.getElementById('result-cc').innerText = "Valores Inválidos";
+                return;
+            }
+
+            // Area = PI/4 * D^2
+            const area = (Math.PI / 4) * Math.pow(bore / 10, 2); // em cm²
+            const strokeCm = stroke / 10; // em cm
+            const totalCc = Math.round(area * strokeCm * cyl);
+            const liters = (totalCc / 1000).toFixed(1);
+
+            document.getElementById('result-cc').innerText = `${totalCc} cm³ (${liters}L)`;
+        }
+
+        // INITIALIZE DEFAULT VIEWER ON LOAD
+        window.onload = function() {
+            switchViewer('piston', document.querySelector('.tab-button'));
+        };
+    </script>
+</body>
+</html>
