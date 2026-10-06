@@ -507,7 +507,7 @@
                 </p>
             </div>
 
-            <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" name="partnerForm" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-4">
+            <form action="https://formsubmit.co/el/xorici" method="POST" id="partnerForm" name="partnerForm" onsubmit="handlePartnerSubmit(event)" class="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Representante:</label>
@@ -738,13 +738,17 @@
         }
 
         function handlePartnerSubmit(event) {
-            event.preventDefault();
+            alert("Solicitação enviada!");
+            return true;
+            
+            document.getElementById('partnerForm').submit();
+
             const name = document.getElementById('partnerName').value;
             const org = document.getElementById('partnerOrg').value;
             const type = document.getElementById('partnerType').value;
 
             alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${type}\n\nUma notificação direta foi enviada para o e-mail do Autor Principal (alexcostasantarosa@gmail.com).`);
-            document.getElementById('partnerForm').reset();
+            document.getElementById('partnerForm').submit();
         }
     </script>
 </body>
