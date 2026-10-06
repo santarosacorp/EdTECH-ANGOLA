@@ -738,17 +738,15 @@
         }
 
         function handlePartnerSubmit(event) {
-            alert("Solicitação enviada!");
-            return true;
             
-            document.getElementById('partnerForm').submit();
-
             const name = document.getElementById('partnerName').value;
             const org = document.getElementById('partnerOrg').value;
             const type = document.getElementById('partnerType').value;
-
+            document.getElementById('partnerForm').submit();
             alert(`Solicitação Enviada com Sucesso!\n\nRepresentante: ${name}\nInstituição: ${org}\nTipo: ${type}\n\nUma notificação direta foi enviada para o e-mail do Autor Principal (alexcostasantarosa@gmail.com).`);
             document.getElementById('partnerForm').submit();
+            alert("Solicitação enviada!");
+            return true;    
         }
     </script>
 </body>
